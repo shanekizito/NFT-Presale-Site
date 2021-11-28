@@ -1,17 +1,61 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+ 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    useQuery,
+    gql
+  } from "@apollo/client";
+  
+  const client = new ApolloClient({
+    uri: 'https://api.thegraph.com/subgraphs/name/amxx/eip721-subgraph',
+    cache: new InMemoryCache()
+  });
+
+
+const ID=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459;
+const no=ID.toString();
+console.log(ID);
+
+
+
+const allNFTS = gql`
+      query Accounts{
+        account(id:${"ID"}){
+    id
+    tokens{
+      id
+    }
+  }
+      }
+
+`
+
+
+  
+const demo= client
+  .query({
+    query:allNFTS
+  })
+  .then
+  ( result =>{try{
+    console.log(result)
+  }
+
+  catch(e){console.log(e)}})
+  
+  
+
+
+
+                  
+  var timestamp =1547493309;
+  var date = new Date(timestamp * 1000);
+  console.log(date)
+
+
+
+
+  
