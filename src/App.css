@@ -1,38 +1,190 @@
-.App {
-  text-align: center;
+body{
+  background-color:rgb(7, 0, 20);
+  line-height:2.5rem;
+  letter-spacing: 3px;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p{
+  font-size:10px;
+}
+.Screen_container{
+  margin-left: 150px;
+  margin-top: -20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.searchInput {
+  border:none;
+  background-color: aliceblue;
+  outline:none;
+  color: rgb(53, 53, 53);
+  font-size: 16px;
+  font-weight: 300;
+  transition: 0.4s;
+   
+  margin-top:-5px;
+  width: 260px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.label{
+   
+  color:rgb(139, 136, 136);
+  
+}
+
+p{
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  border-radius: 16px;
+  margin:5px 0 0 0;
+  padding:10px;
+  
+}
+
+.container{
+  border-radius: 10px;
+  margin-left:20px;
+  width:fit-content;
+  color:white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding:20px;
+  font-size: 22px;
+  background-color: rgb(34, 32, 32);
+  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
+  border:1px silver;
+  
+  
+  margin-top:30px;
+  background: rgba(0, 0, 0, 0.849);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.671);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  
+}
+
+
+.Screen_container_inner{
+  display:flex;
   flex-direction: column;
-  align-items: center;
+}
+.Account_Address{
+  height:685px;
+  width:520px;
+  font-size: 15px;
+  font-style: italic;
+  margin-right: 0px;
+ 
+   
+ 
+} 
+
+.Account_Address>p{
+  font-weight: 1000px;
+  font-size: 17px;
+}
+.Account_Address>p,.Account_Address>h4{
+  width:fit-content;
+  border-radius: 20px;
+  padding:12px;
+   
+  border-style: solid;
+border-color: #35bda4;
+}
+
+
+.Row_one{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.Row_zero{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+}
+
+.Account_Latest_Stats{
+  display:flex;
+  flex-direction: row;
+  
+   
+  width: 66vw;
+  height:auto;
+}
+.Account_Earliest_Stats{
+  width: 36vw;
+  height:auto;
+}
+
+.Account_Latest_Column2{
+  margin-left:50px;
+}
+.Account_Latest_Column1{
+  margin-left:-540px;
+}
+.Account_Latest_Column1,  .Account_Latest_Column2{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width:fit-content;
+  height:fit-content;
+ 
+  margin-top:60px;
 }
 
-.App-link {
-  color: #61dafb;
+.Account_Balance{
+  width:400px;
+  height:205px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Account_SixtyDay_Averages{
+  width:67vw;
+  height:auto;
+}
+
+.Account_Recent_Transactions{
+  margin-left:1350px;
+  margin-top:-1650px;
+  width:330px;
+  height:81.6vw;
+  overflow: hidden;
+   
+}
+
+p{
+  overflow: hidden;
+}
+
+
+html,body{
+  font-family: 'Times New Roman', Times, serif;
+  background-image: url('./images/background.jpg');
+  box-sizing: border-box;
+}
+
+.labelecondary{
+   
+  color:#10fbd0;
+  font-size: 18px;
+ 
+ }
+
+ .header{
+   display:flex;
+   flex-direction: column;
+  margin-left:450px ;
+  
+  margin-top:-20px;
+ align-items: flex-start;
+  color:white;
+  margin-bottom:20px;
 }
