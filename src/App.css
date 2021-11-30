@@ -15,6 +15,7 @@ p{
 
 
 
+
 .searchInput {
   border:none;
   background-color: aliceblue;
@@ -37,13 +38,15 @@ p{
 }
 
 p{
-  font-size: 18px;
+  font-size: 15px;
   border: 1px solid rgba(255, 255, 255, 0.096);
   border-radius: 16px;
   margin:5px 0 0 0;
-  padding:10px;
+  padding:6px;
   
 }
+
+
 
 .container{
   border-radius: 10px;
@@ -72,6 +75,45 @@ p{
 .Screen_container_inner{
   display:flex;
   flex-direction: column;
+}
+
+.searchButton,.refreshButton{
+  height:54px;
+  width:70px;
+ font-size:17px;
+ border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px;
+ color:#10fbd0;
+  background-color:black;
+ 
+  border:  2px solid #10fbd0;
+  border-left: 1px solid #10fbd0;
+}
+
+.refreshButton{
+  margin:30px 45px;
+  width:100px;
+  border-radius: 15px;
+}
+.searchButton:hover{
+  cursor: pointer;
+  
+
+}
+
+.refreshButton:hover {
+  cursor: pointer;
+  transform:scale(1.07);
+
+  
+}
+.searchInput{
+  height:48px;
+  border-top-left-radius: 10px;
+ border-bottom-left-radius: 10px;
+ border:  2px solid #10fbd0;
+ border-right: 1px solid #10fbd0; 
+
 }
 .Account_Address{
   height:685px;
@@ -125,10 +167,10 @@ border-color: #35bda4;
 }
 
 .Account_Latest_Column2{
-  margin-left:50px;
+  margin-left:150px;
 }
 .Account_Latest_Column1{
-  margin-left:-540px;
+  margin-left:-510px;
 }
 .Account_Latest_Column1,  .Account_Latest_Column2{
   display:flex;
@@ -151,14 +193,6 @@ border-color: #35bda4;
   height:auto;
 }
 
-.Account_Recent_Transactions{
-  margin-left:1350px;
-  margin-top:-1650px;
-  width:330px;
-  height:81.6vw;
-  overflow: hidden;
-   
-}
 
 p{
   overflow: hidden;
@@ -183,8 +217,68 @@ html,body{
    flex-direction: column;
   margin-left:450px ;
   
-  margin-top:-20px;
+  margin-top:20px;
  align-items: flex-start;
+ font-size:25px;
   color:white;
   margin-bottom:20px;
+}
+
+.Nav_Bar{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width:83vw;
+  height:10vh;
+  padding: 10px 55px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  margin:10px;
+  cursor: pointer;
+  
+}
+
+.fab{
+  margin:5px;
+  color:#ffffff;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #10fbd0;
+  padding:10px;
+  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
+  border:8px silver;
+  cursor: pointer;
+  
+}
+
+.labelPrimary{
+  color:white;
+  font-size: 16px;
+  font-weight: 1500px;
+  
+  margin-top:10px;
+}
+
+.Account_Recent_Transactions{
+  position: absolute;
+  margin-left:1350px;
+  margin-top:-2610px;
+  width:330px;
+  max-height:272vh;
+  overflow: hidden;
+   
+}
+
+.Account_Empty_Transactions{
+  position: absolute;
+  margin-left:1350px;
+  margin-top:-1355px;
+  width:330px;
+  max-height:272vh;
+  overflow: hidden;
+
 }

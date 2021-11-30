@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import './App.css'
+import './App.css';
+import {Link , BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import {
   ApolloClient,
@@ -17,22 +19,25 @@ import { parse } from 'graphql';
 export function SetBoughtDate(){
   const [NFTS,setNFTS]=useState([]);
 
-  const[transfer,setTransfer]=useState("");
+  const[transfer,setTransfer]=useState(0);
 
- const [received,setReceived]=useState("");
+ const [received,setReceived]=useState('');
 
- const [latestTransferred,setLatestTransferred]=useState("");
+ const [latestTransferred,setLatestTransferred]=useState(0);
 
- const [latestReceived,setLatestReceived]=useState("");
+ const [latestReceived,setLatestReceived]=useState('');
 
- const [sixtyDayTo,setSixtyDayTo]=useState("");
+ const [sixtyDayTo,setSixtyDayTo]=useState(0);
 
-  const [sixtyDayFrom,setSixtyDayFrom]=useState("");
+  const [sixtyDayFrom,setSixtyDayFrom]=useState(0);
 
-  const [ethereumBalance,setEthereumBalance]=useState("");
+  const [ethereumBalance,setEthereumBalance]=useState(0);
 
-  const [assetAmount,setAssetAmount]=useState("");
+  const [assetAmount,setAssetAmount]=useState(0);
 
+  const [ID,setID]=useState(0);
+
+  const [account_period,setAccountPeriod]=useState(0);
 
   const NFT_single = ({
     id,
@@ -49,19 +54,22 @@ export function SetBoughtDate(){
   } ;
 
 
+ 
+
   const client = new ApolloClient({
     uri: 'https://api.thegraph.com/subgraphs/name/amxx/eip721-subgraph',
     cache: new InMemoryCache()
   });
 
 
-  const ID="0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459";
-  const no=Number(ID);
-  
+
+
+ 
+   
+ 
 
   
 
-  const options = {method: 'GET'};
 
 
 
@@ -153,29 +161,33 @@ query Accounts($ID: String!) {
 
 
   
-
+async function GetAllNFTS(ID){
   
 
-  React.useEffect(() => {
+  
+  const options = {method: 'GET'};
 
 
- fetch('https://api.etherscan.io/api?module=account&action=balance&address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&tag=latest', options)
+ fetch('https://api.etherscan.io/api?module=account&action=balance&address='+`${ID}` +'&tag=latest', options)
   .then(response => response.json())
-  .then(response => setEthereumBalance(((response.result)/1000000000000000000).toFixed(2)))
+  .then(response => setEthereumBalance((parseInt(response.result)/1000000000000000000).toFixed(2))) 
   .catch(err => console.error(err));
 
 
 
   const Options_Asset = {method: 'GET'};
 
-  fetch('https://api.opensea.io/api/v1/assets?owner=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&order_direction=desc&offset=0&limit=50', Options_Asset)
+  fetch('https://api.opensea.io/api/v1/assets?owner='+ `${ID}`+'&order_direction=desc&offset=0&limit=50', Options_Asset)
   .then(response => response.json())
   .then(response => setAssetAmount(response.assets.length))
   .catch(err => console.error(err));
 
+ 
   
+console.log(`'https://api.opensea.io/api/v1/assets?owner=${ID}&order_direction=desc&offset=0&limit=50'`)
 
-   const RecentNFTS= client
+
+   const  RecentNFTS= client
    .query({
      query:CurrentNFTSschema,
      variables: {
@@ -257,28 +269,43 @@ query Accounts($ID: String!) {
     .then
     ( result =>{try{
      
-         setLatestReceived( 
-        {
-          name:result.data.account.transfersTo[0].token.registry.name,
-          ID:result.data.account.transfersTo[0].token.registry.id,
-          date:new Date(result.data.account.transfersTo[0].timestamp * 1000).toLocaleDateString(),
-          token:result.data.account.transfersTo[0].token
+
+        
+         let LR_array=[];
+         let LT_array=[];
+        for(i=0;i<5;i++){
+        
+
+        const L_r={
+          name:result.data.account.transfersTo[i].token.registry.name,
+          ID:result.data.account.transfersTo[i].token.registry.id,
+          date:new Date(result.data.account.transfersTo[i].timestamp * 1000).toLocaleDateString(),
+          token:result.data.account.transfersTo[i].token
         }
-      )
-        
-        
-      setLatestTransferred(
-        {
-          name:result.data.account.transfersFrom[0].token.registry.name,
-          id:result.data.account.transfersFrom[0].token.registry.id,
-          date:new Date(result.data.account.transfersFrom[0].timestamp * 1000).toLocaleDateString()
+
+        LR_array.push(L_r);
+
+        const L_T={
+          name:result.data.account.transfersFrom[i].token.registry.name,
+          id:result.data.account.transfersFrom[i].token.registry.id,
+          date:new Date(result.data.account.transfersFrom[i].timestamp * 1000).toLocaleDateString()
+
         }
-      )
-        
+         
+        LT_array.push(L_T);
+
+
+       
+      
+      
+      }
+
+         setLatestReceived(LR_array);
+         setLatestTransferred(LT_array);      
       
   
-      var sixtyDaysNftIn=[];
-      var sixtyDaysNftOut=[];
+       var sixtyDaysNftIn=[];
+       var sixtyDaysNftOut=[];
        for(var i=0;i<result.data.account.transfersTo.length;i++){
          
       
@@ -332,40 +359,10 @@ query Accounts($ID: String!) {
       }
 
 
-      var from_array=[]
-      var from_loop=result.data.account.transfersFrom.length;
-    
-      for(var i=0;i<from_loop;i++){
-        
-       
-        var from_NFT= {
-
-          name:result.data.account.transfersFrom[i].token.registry.name,
-          id:result.data.account.transfersFrom[i].token.registry.id,
-          timestamp: result.data.account.transfersFrom[i].timestamp 
-        }
-        
-        
-        from_array.push(from_NFT)
- 
-       }
-
-       from_array.forEach(element => {
       
-
-        to_array.forEach(element2 => {
-          
-          if(element.id!==element2.id){
-           const hodltime=parseInt(element.timestamp)-parseInt(element2.timestamp);
-            
-          }
-        }
-
-       
-       
-       )}  );  
+      const Account_Active=(new Date(latestReceived[0].date).getTime()-new Date(received.date).getTime())/(1000*60*60*24);
          
-       
+      setAccountPeriod(Account_Active)
         
 
        
@@ -377,61 +374,114 @@ query Accounts($ID: String!) {
   
     catch(e){console.log(e)}})
 
+    
+
+  
+    
+  };
+
    
   
-   
+ 
 
+  
+
+  const handleChange = e => {
+
+    if(e.target.value!==''){
+    setID(`${e.target.value}`);
     
-   
-  }, []);
+    console.log(`"${e.target.value}"`);
+    console.log(ethereumBalance);
+  
+  }};
+
+
+
+  
+ function handleClick(e){
+   e.preventDefault();
+   GetAllNFTS(ID);
+
+}
+
+function handleRefresh(e){
+  if(ID!==0){
+    e.preventDefault();
+    GetAllNFTS(ID);
+  }
+
+}
 
 
 
 
 
-
-
-
-
-
+ 
 
   
   return (
 
     <div className="Screen_container">
-
-      <div className="Search_Box container">
-      <input class="searchInput"type="text" name="" placeholder="Search for example NFT artist "/>
-      <button class="searchButton" type="submit">Search</button>
+       <Router>
+     <div className="Nav_Bar container">
+       <h4 className="Nav_Logo">NFT.</h4>
+        <div className="Nav_Links">
+          <Link className="Nav_Pages"  to='https://github.com/shanekizito'>Home</Link>
+          <Link to='https://github.com/shanekizito'>Dashboard</Link>
+          <Link to='https://github.com/shanekizito'>Faq</Link>
+          </div>
+      <div className="Nav_Socials">
+      <i class="fab fa-discord"></i>
+      <i class="fab fa-telegram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-instagram"></i>
+      
       </div>
+     
+     </div>
+     </Router>
+      <div className="Search_Box container">
+        <form>
+      <input className="searchInput"type="text" onChange={handleChange} placeholder="Paste Wallet "/>
+      <button className="searchButton" type="submit" onClick={handleClick}>Search</button>
+     
+      </form>
+      </div>
+      <button className="refreshButton" type="submit" onClick={handleRefresh}>Refresh <span><i class="fas fa-sync"></i> </span></button>
     <div className="Screen_container_inner">
    <div className="Row_zero">
      <div className="Account_Address container">
 
        <h2 >Account Stats</h2>
        <h3 className="label">Account Address</h3>
-     <p> {ID}</p>
+     <p> {`${ID}`}</p>
+
 
 
      <h3 className="label">Account Balance</h3>
-      <h4>{ethereumBalance}ETH <i class="fab fa-ethereum"></i></h4>
+      <h4>{`${ethereumBalance}`}ETH <i class="fab fa-ethereum"></i></h4>
       <h3 className="label">NFTS in Wallet</h3>
-     <h4>{assetAmount}</h4>
+     <h4>{`${assetAmount}`}</h4>
+     <h3 className="label">Days account active</h3>
+     <p> {`${account_period}`}</p>
+     
      </div>
      
      
      
      <div className="Account_Earliest_Stats container">
-        <h3 className="label">Earliest transfers</h3>
+        <h3 className="label">Earliest NFTS</h3>
          
         <h4 className="label">IN</h4>
      
       <p >
         
-       Name <i class="fas fa-dice-d6"></i> <br/> <span  className="labelecondary"> {`${received.name}`}</span> 
+       Name <i class="fas fa-dice-d6"></i> <br/> <span  className="labelecondary"> { received.name?`${received.name}`:"Empty"}</span> 
       </p>
       <p  >
-       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary"> {`${received.date }`}</span>
+       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary"> {received.date?`${received.date }`:"Empty"}</span>
       </p>
 
         <h4 className="label">OUT</h4>
@@ -439,11 +489,11 @@ query Accounts($ID: String!) {
 
 
         
-       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {`${transfer.name}`}</span>
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {transfer.name?`${transfer.name}`:"Empty"}</span>
       </p>
      
-     <p >
-       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">  {`${transfer.date }`}</span>
+     <p>
+       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{transfer.date?`${transfer.date}`:"Empty"}</span>
      </p>
 
      
@@ -460,36 +510,35 @@ query Accounts($ID: String!) {
     
 
       <div className="Account_Latest_Stats container">
-      <h4 className="header">Latest transfers</h4> 
+      <h4 className="header">Latest NFTS</h4> 
         <div className="Account_Latest_Column1">
 
-        
+          
        
       <h4 className="label">IN</h4>
-      <p >
-        Name <i class="fas fa-dice-d6"></i> <br/> 
-        <span  className="labelecondary">
-        {`${latestReceived.name}`}</span>
-      </p>
-      <p >
-       Token Address <i class="fas fa-file-alt"></i><br/> <span  className="labelecondary">
-      {`${latestReceived.ID}`}</span>
-      </p>
-      <p >Date <i class="fas fa-calendar-alt"></i> <br/><span  className="labelecondary"> {`${latestReceived.date }`}</span></p>
+      <span  className="labelecondary">  { latestReceived.length>2?
+        
+        latestReceived.map(LR=>{
+          return(<p><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LR.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LR.ID}
+          <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>{LR.date}
+          </p>) 
+        }):"Empty"}</span>
+      
 
       </div>
       <div className="Account_Latest_Column2">
       <h4 className="label">OUT</h4>
-      <p >
-        Name <i class="fas fa-dice-d6"></i><br/> 
-        <span  className="labelecondary">  {`${latestTransferred.name}`}</span>
-      </p>
+      
+        <span  className="labelecondary">  { latestTransferred.length>2?
+        
+        latestTransferred.map(LT=>{
+          return(<p><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LT.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LT.id}
+          <br/><span  className="labelPrimary"> Date <i class="fas fa-calendar-alt"></i> </span>   <br/>{LT.date}
+          </p>) 
+        }):"Empty"}</span>
+      
 
-      <p >
-       Token Address <i class="fas fa-file-alt"></i> <br/> 
-       <span  className="labelecondary">  {`${latestTransferred.id}`}</span>
-      </p>
-      <p >Date <i class="fas fa-calendar-alt"></i>  <br/>  <span  className="labelecondary">{`${latestTransferred.date }`}</span></p>
+     
       </div>
       </div>
 
@@ -511,10 +560,11 @@ query Accounts($ID: String!) {
       </div>
       </div>
 
-      <div className="Account_Recent_Transactions container"> 
+      <div className={NFTS.length>2?"Account_Recent_Transactions container":"Account_Empty_Transactions container"}> 
        <h3 className="label">Current NFTS</h3>
        
-       {NFTS.map(nft => {
+
+       {NFTS.length>2?NFTS.map(nft => {
           return (
             <NFT_single
             key={nft.registry.id}
@@ -524,7 +574,7 @@ query Accounts($ID: String!) {
             
             />
           )
-       })}
+       }):<h5>None</h5> }
        
       </div>
 
