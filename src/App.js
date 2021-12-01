@@ -39,6 +39,13 @@ export function SetBoughtDate(){
 
   const [account_period,setAccountPeriod]=useState(0);
 
+  const [NFT_Sale,setNFT_Sale]=useState([]);
+
+  const [recentSale,setRecentSale]=useState([]);
+
+  const [earliestSale,setEarliestSale]=useState([]);
+
+
   const NFT_single = ({
     id,
     Name,
@@ -183,8 +190,76 @@ async function GetAllNFTS(ID){
   .catch(err => console.error(err));
 
  
+  const options_Event = {
+    method: 'GET',
+    headers: {Accept: 'application/json', 'X-API-KEY': '2d3ddf54946e4569b7cd1df8daca6e4a'}
+  };
   
-console.log(`'https://api.opensea.io/api/v1/assets?owner=${ID}&order_direction=desc&offset=0&limit=50'`)
+  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=1000&limit=300', options_Event)
+    .then(response => response.json())
+    .then(response => {
+
+      
+      console.log(response.asset_events.length);
+
+      const asset_array=[];
+
+      for(var i=0;i<response.asset_events.length;i++){
+
+     
+        
+        var SingleAsset={
+         
+          Date: response.asset_events[i].created_date.slice(0,-16),  
+          Asset: response.asset_events[i].asset,
+
+          price:response.asset_events[i].total_price/1000000000000000000,
+          buy:response.asset_events[i].transaction.to_account.address?response.asset_events[i].transaction.to_account.address:"",
+          seller: response.asset_events[i].seller.address?response.asset_events[i].seller.address:"",
+          buyer:response.asset_events[i].winner_account.address,
+         
+        }
+
+        
+         asset_array.push(SingleAsset);
+   
+
+      
+
+
+
+         
+
+    }
+
+
+   
+
+
+
+    
+
+    setNFT_Sale(asset_array)
+   
+
+  
+  }).catch(err => console.error(err));
+
+
+
+  const Arranged_Buys=NFT_Sale.sort(function(a, b) {
+    return new Date(b.Date) - new Date(a.Date);
+  });
+
+
+  setRecentSale(Arranged_Buys[0]);
+  setEarliestSale(Arranged_Buys[Arranged_Buys.length-1]);
+
+console.log(NFT_Sale);
+
+
+
+  
 
 
    const  RecentNFTS= client
@@ -196,7 +271,7 @@ console.log(`'https://api.opensea.io/api/v1/assets?owner=${ID}&order_direction=d
    })
    .then
    ( result =>{try {
-   console.log(result.data.account.tokens);
+   ;
     
     setNFTS(
       result.data.account.tokens
@@ -211,7 +286,7 @@ console.log(`'https://api.opensea.io/api/v1/assets?owner=${ID}&order_direction=d
    catch(e){console.log(e+'error')}})
  
 
-   console.log(NFTS);
+ 
 
 
     const demo= client
@@ -454,7 +529,7 @@ function handleRefresh(e){
    <div className="Row_zero">
      <div className="Account_Address container">
 
-       <h2 >Account Stats</h2>
+       <h2 >Wallet Stats</h2>
        <h3 className="label">Account Address</h3>
      <p> {`${ID}`}</p>
 
@@ -567,7 +642,7 @@ function handleRefresh(e){
        {NFTS.length>2?NFTS.map(nft => {
           return (
             <NFT_single
-            key={nft.registry.id}
+             
             Name={nft.registry.name}
             id={nft.registry.id}
             
