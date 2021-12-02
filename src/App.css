@@ -78,8 +78,8 @@ p{
 }
 
 .searchButton,.refreshButton{
-  height:54px;
-  width:70px;
+  height:65px;
+  width:65px;
  font-size:17px;
  border-top-right-radius: 10px;
  border-bottom-right-radius: 10px;
@@ -91,9 +91,12 @@ p{
 }
 
 .refreshButton{
-  margin:30px 45px;
-  width:100px;
-  border-radius: 15px;
+  position:fixed;
+  margin-top:150px;
+  margin-left: -170px;
+  padding: 20px;
+  width:130px;
+  border-radius: 25px;
 }
 .searchButton:hover{
   cursor: pointer;
@@ -144,6 +147,7 @@ border-color: #35bda4;
   display:flex;
   flex-direction: row;
   align-items: flex-start;
+   margin-left: 50px;
 }
 
 .Row_zero{
@@ -153,26 +157,36 @@ border-color: #35bda4;
 
 }
 
-.Account_Latest_Stats{
+.Account_Latest_Stats,.Account_Earliest_Stats{
   display:flex;
   flex-direction: row;
   
    
-  width: 66vw;
-  height:auto;
-}
-.Account_Earliest_Stats{
-  width: 36vw;
+  width: 65vw;
   height:auto;
 }
 
+.Account_Latest_Stats{
+  margin-left:-20px;
+}
+
+.Earliest_Stats_Column2{
+  margin-left:230px;
+}
+
+.Earliest_Stats_Column1{
+  margin-left:-480px;
+  
+}
+
+
 .Account_Latest_Column2{
-  margin-left:150px;
+  margin-left:200px;
 }
-.Account_Latest_Column1{
-  margin-left:-510px;
-}
-.Account_Latest_Column1,  .Account_Latest_Column2{
+
+
+
+.Account_Latest_Column1,  .Account_Latest_Column2,.Earliest_Stats_Column1,.Earliest_Stats_Column2{
   display:flex;
   flex-direction: column;
   align-items: flex-start;
@@ -189,8 +203,8 @@ border-color: #35bda4;
 }
 
 .Account_SixtyDay_Averages{
-  width:67vw;
-  height:auto;
+  width:35vw;
+  height:690px;
 }
 
 
@@ -266,19 +280,105 @@ a{
 .Account_Recent_Transactions{
   position: absolute;
   margin-left:1350px;
-  margin-top:-2610px;
+  margin-top:-3735px;
   width:330px;
-  max-height:272vh;
-  overflow: hidden;
+  max-height:186vh;
+  overflow-y: scroll;
    
 }
 
 .Account_Empty_Transactions{
   position: absolute;
   margin-left:1350px;
-  margin-top:-1355px;
+  margin-top:-2780px;
   width:330px;
   max-height:272vh;
   overflow: hidden;
 
 }
+
+
+.Account_Earliest_Stats{
+  
+  height:auto;
+   
+  margin-left:-1300px;
+  margin-top: 800px;
+  width:65vw;
+}
+
+.Earliest_Stats_grid{
+  min-width: 300px;
+  min-height: 300px;
+  padding: 20px;
+}
+
+.Latest_Stats_grid{
+  min-width: 300px;
+  min-height: 100px;
+  padding: 20px;
+}
+
+.Account_Latest_Column1{
+  
+  margin-left:-410px;
+  
+   
+  
+
+ 
+}
+
+.Account_Latest_Buys{
+  overflow-y: scroll;
+  height:600px;
+  padding:10px;
+}
+
+.Account_Latest_Sales{
+  overflow-y: scroll;
+  height:600px;
+  margin-top: 100px;
+  margin-left: 25px;
+  padding:10px;
+}
+
+
+
+body::-webkit-scrollbar-thumb {
+  width: 12px;     
+  background-color: blue;           
+}
+
+.Sells-header{
+  margin-top: 100px;
+  margin-bottom: 90px;
+  margin-left: 120px;
+}
+
+
+
+.Buys-header{
+  
+ margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 120px;
+}
+
+.Account_Latest_In{
+  
+  max-height: 600px;
+  overflow-y: scroll;
+  margin-left: -25px;
+ }
+ 
+
+ .Account_Latest_Out{
+
+  max-height: 600px;
+  overflow-y: scroll;
+  margin-left: -35px;
+  margin-top: 105px;
+  padding:10px;
+
+ }

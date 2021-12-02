@@ -41,9 +41,22 @@ export function SetBoughtDate(){
 
   const [NFT_Sale,setNFT_Sale]=useState([]);
 
+  const [SD_NFT_Sale,setSD_NFT_Sale]=useState([]);
+
+  const [SD_Sales,setSD_Sales]=useState([]);
+
+  const [SD_Buys,setSD_Buys]=useState([]); 
+
+
   const [recentSale,setRecentSale]=useState([]);
 
   const [earliestSale,setEarliestSale]=useState([]);
+
+  const [immediateSales,setImmediateSales]=useState([]);
+
+  const [immedateBuys,setImmediateBuys]=useState([]); 
+  
+  
 
 
   const NFT_single = ({
@@ -174,6 +187,9 @@ async function GetAllNFTS(ID){
   
   const options = {method: 'GET'};
 
+ 
+  
+
 
  fetch('https://api.etherscan.io/api?module=account&action=balance&address='+`${ID}` +'&tag=latest', options)
   .then(response => response.json())
@@ -195,30 +211,130 @@ async function GetAllNFTS(ID){
     headers: {Accept: 'application/json', 'X-API-KEY': '2d3ddf54946e4569b7cd1df8daca6e4a'}
   };
   
-  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=1000&limit=300', options_Event)
+
+/*
+
+          var buys_ID = [];
+
+          for(var i = 0; i <immedateBuys.length; i++) {
+
+            buys_ID.push(immedateBuys[i].asset.id);
+
+          }  
+
+
+         var ids= buys_ID.join('&token_ids=');
+*/
+
+
+
+
+
+
+ 
+  
+  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=0&limit=300&occurred_after=1632850162000', options_Event)
     .then(response => response.json())
     .then(response => {
+     
 
+      const SD_asset_array=[];
+      setSD_NFT_Sale(SD_asset_array) ;
       
-      console.log(response.asset_events.length);
-
-      const asset_array=[];
 
       for(var i=0;i<response.asset_events.length;i++){
 
      
         
-        var SingleAsset={
-         
-          Date: response.asset_events[i].created_date.slice(0,-16),  
-          Asset: response.asset_events[i].asset,
-
+        var SD_SingleAsset=
+        {
+          
+          Date:response.asset_events[i].created_date? response.asset_events[i].created_date.slice(0,-16):'Empty',
           price:response.asset_events[i].total_price/1000000000000000000,
-          buy:response.asset_events[i].transaction.to_account.address?response.asset_events[i].transaction.to_account.address:"",
-          seller: response.asset_events[i].seller.address?response.asset_events[i].seller.address:"",
-          buyer:response.asset_events[i].winner_account.address,
-         
+          seller: response.asset_events[i].seller!==null?response.asset_events[i].seller.address:"",
+          asset: response.asset_events[i].asset,
+      
         }
+       
+
+        
+        SD_asset_array.push(SD_SingleAsset);
+   
+
+      
+
+         
+
+          
+
+    }
+    
+
+    
+
+   
+   
+   
+
+  
+  }).catch(err => console.error(err));
+
+  if (SD_NFT_Sale.length>2){
+    var SD_array_Recent_Sales=[];
+    var SD_array_Recent_Buys=[];
+    for (var i=0;i<NFT_Sale.length;i++){
+      if(SD_NFT_Sale[i].seller==ID){
+  
+        SD_array_Recent_Sales.push(SD_NFT_Sale[i]);
+        
+        
+  
+      }
+      else{
+        SD_array_Recent_Buys.push(SD_NFT_Sale[i]);
+      }
+  
+      setSD_Sales(SD_array_Recent_Sales);
+      setSD_Buys(SD_array_Recent_Buys);  
+      }
+    }
+
+
+console.log(SD_Sales)
+    
+      
+
+
+    
+
+    
+
+
+  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=2000&limit=300', options_Event)
+    .then(response => response.json())
+    .then(response => {
+
+      
+      
+
+      const asset_array=[];
+      setNFT_Sale(asset_array) ;
+      
+
+      for(var i=0;i<response.asset_events.length;i++){
+
+     
+        
+        var SingleAsset=
+        {
+          
+          Date:response.asset_events[i].created_date? response.asset_events[i].created_date.slice(0,-16):'Empty',
+          price:response.asset_events[i].total_price/1000000000000000000,
+          seller: response.asset_events[i].seller!==null?response.asset_events[i].seller.address:"",
+          asset: response.asset_events[i].asset,
+      
+        }
+       
 
         
          asset_array.push(SingleAsset);
@@ -226,20 +342,17 @@ async function GetAllNFTS(ID){
 
       
 
-
-
          
 
+          
+
     }
-
-
-   
-
-
+    
 
     
 
-    setNFT_Sale(asset_array)
+   
+   
    
 
   
@@ -251,13 +364,44 @@ async function GetAllNFTS(ID){
     return new Date(b.Date) - new Date(a.Date);
   });
 
+//................................................................................................................
 
-  setRecentSale(Arranged_Buys[0]);
-  setEarliestSale(Arranged_Buys[Arranged_Buys.length-1]);
+
+ 
 
 console.log(NFT_Sale);
 
 
+if (NFT_Sale.length>2){
+  var array_Recent_Sales=[];
+  var array_Recent_Buys=[];
+  for (var i=0;i<NFT_Sale.length;i++){
+    if(NFT_Sale[i].seller==ID){
+
+      array_Recent_Sales.push(NFT_Sale[i]);
+      
+      
+
+    }
+    else{
+      array_Recent_Buys.push(NFT_Sale[i]);
+    }
+
+    setImmediateSales(array_Recent_Sales);
+    setImmediateBuys(array_Recent_Buys);  
+    }
+  }
+
+
+
+
+
+
+  
+
+
+
+ 
 
   
 
@@ -348,7 +492,7 @@ console.log(NFT_Sale);
         
          let LR_array=[];
          let LT_array=[];
-        for(i=0;i<5;i++){
+        for(i=0;i<result.data.account.transfersTo.length;i++){
         
 
         const L_r={
@@ -390,9 +534,7 @@ console.log(NFT_Sale);
           sixtyDaysNftIn.push(result.data.account.transfersTo[i].id)
          
          }
-         
-
-         
+ 
 
 
       };
@@ -492,6 +634,7 @@ function handleRefresh(e){
 
 
 
+
  
 
   
@@ -544,36 +687,91 @@ function handleRefresh(e){
      
      </div>
      
+
+     <div className="Account_SixtyDay_Averages container">
+        <h3 className="label">60 days Averages</h3>
+    <p>
+    NFTs in<br/>
+        {`${sixtyDayTo}`} 
+    </p>
+
+    <p>
+    NFTs Out <br/>
+        {`${sixtyDayFrom}`} 
+    </p>
+
+    <p>
+    Buys <br/>
+        {`${SD_Buys.length}`} 
+    </p>
+
+    <p>
+    Sale<br/>
+        {`${SD_Sales.length}`} 
+    </p>
+     
+     
+      </div>
      
      
      <div className="Account_Earliest_Stats container">
-        <h3 className="label">Earliest NFTS</h3>
+        <h3 className="header">Earliest NFTS</h3>
          
+     
+
+      <div className="Earliest_Stats_Column1">
+     <h4 className="label">Buys</h4>
+      <p className="Earliest_Stats_grid" >
+        
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {SD_Buys.length>2?`${SD_Buys[SD_Buys.length-1].asset.collection.name}`:"Empty"}</span>
+     <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{SD_Buys.length>2?`${SD_Buys[SD_Buys.length-1].Date}`:"Empty"}</span> <br/>
+     Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{SD_Buys.length>2?`${SD_Buys[SD_Buys.length-1].price}`:"Empty"}ETH</span>
+     
+      </p>
+     
+    
+      
+
+     <h4 className="label">Sale</h4>
+      <p className="Earliest_Stats_grid" >
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {SD_Sales.length>2?`${SD_Sales[SD_Sales.length-1].asset.collection.name}`:"Empty"}</span>
+
+       <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{SD_Sales.length>2?`${SD_Sales[SD_Sales.length-1].Date}`:"Empty"}</span> <br/>
+        Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{SD_Sales.length>2?`${SD_Sales[SD_Sales.length-1].price}`:"Empty"}ETH</span> <br/>
+        Address <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{SD_Sales.length>2?`${SD_Sales[SD_Sales.length-1].address}`:"Empty"}</span>
+       </p>
+     
+    
+       </div>
+
+       <div className="Earliest_Stats_Column2">
         <h4 className="label">IN</h4>
      
-      <p >
+      <p className="Earliest_Stats_grid" >
         
-       Name <i class="fas fa-dice-d6"></i> <br/> <span  className="labelecondary"> { received.name?`${received.name}`:"Empty"}</span> 
+       Name <i class="fas fa-dice-d6"></i> <br/> <span  className="labelecondary"> { received.name?`${received.name}`:"Empty"}</span> <br/> Date <i class="fas fa-calendar-alt"></i>   <br/>
+       <span  className="labelecondary">{received.date?`${received.date }`:"Empty"} </span>  
       </p>
-      <p  >
-       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary"> {received.date?`${received.date }`:"Empty"}</span>
-      </p>
+
+
+    
 
         <h4 className="label">OUT</h4>
-      <p >
 
-
-        
+      <p  className="Earliest_Stats_grid">
+       <span  className="labelecondary"> </span>
        Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {transfer.name?`${transfer.name}`:"Empty"}</span>
+       Date <i class="fas fa-calendar-alt"></i>
+       <br/>  
+       <span  className="labelecondary">{transfer.date?`${transfer.date}`:"Empty"} </span>
       </p>
-     
-     <p>
-       Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{transfer.date?`${transfer.date}`:"Empty"}</span>
-     </p>
 
+      </div>
+    
+     
      
       
-       
+      
       </div>
 
       </div>
@@ -585,54 +783,129 @@ function handleRefresh(e){
     
 
       <div className="Account_Latest_Stats container">
-      <h4 className="header">Latest NFTS</h4> 
-        <div className="Account_Latest_Column1">
+
+
+      <h4 className="header">Recent NFTS </h4> 
+
+      <div className="Account_Latest_Column1">
+
+
+      <h4 className="label Buys-header">Buys</h4>
+
+ <div className="Account_Latest_Buys"> 
+      {immedateBuys.length>2?
+
+      
+       
+        immedateBuys.map((item)=>{
+          return(
 
           
+          <p className="Latest_Stats_grid" >        
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {`${item.asset.collection.name}`}</span>
+      
+      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.Date}`}</span> <br/>
+      Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.price}`}ETH</span>
+      </p>
+        )})
+        
+
        
-      <h4 className="label">IN</h4>
+
+
+
+
+
+     :<p>Empty</p>}
+
+</div>
+     
+      
+
+<h4 className="label Sells-header">Sells</h4>
+
+<div className="Account_Latest_Sales"> 
+
+
+      {immediateSales.length>2?
+
+      
+       
+        immediateSales.map((item)=>{
+          return(
+
+          
+          <p className="Latest_Stats_grid" >        
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {`${item.asset.collection.name}`}</span>
+      
+      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.Date}`}</span> <br/>
+      Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.price}`}ETH</span>
+      </p>
+        )})
+        
+
+       
+
+
+
+
+
+     :<p>Empty</p>}
+
+</div>
+     
+      
+      
+
+      
+        
+     </div>
+
+          
+     <div className="Account_Latest_Column2">
+      <h4 className="label Sells-header">IN</h4>
+      <div className="Account_Latest_In" > 
+
       <span  className="labelecondary">  { latestReceived.length>2?
         
         latestReceived.map(LR=>{
-          return(<p><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LR.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LR.ID}
+          return(<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LR.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LR.ID}
           <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>{LR.date}
           </p>) 
-        }):"Empty"}</span>
+        }):<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>Empty <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>Empty
+        <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>Empty
+        </p>}</span>
+      
+     </div>
+
       
 
-      </div>
-      <div className="Account_Latest_Column2">
-      <h4 className="label">OUT</h4>
       
+     
+      <h4 className="label Sells-header">OUT</h4>
+
+      
+      <div className="Account_Latest_Out" > 
         <span  className="labelecondary">  { latestTransferred.length>2?
         
         latestTransferred.map(LT=>{
-          return(<p><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LT.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LT.id}
+          return(<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LT.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LT.id}
           <br/><span  className="labelPrimary"> Date <i class="fas fa-calendar-alt"></i> </span>   <br/>{LT.date}
           </p>) 
-        }):"Empty"}</span>
+        }):<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>Empty <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>Empty
+        <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>Empty
+        </p>}</span>
       
+      </div>
 
      
+    
       </div>
       </div>
 
     </div>
 
-      <div className="Account_SixtyDay_Averages container">
-        <h3 className="label">60 days Averages</h3>
-    <p>
-    NFTs in<br/>
-        {`${sixtyDayTo}`} 
-    </p>
-
-    <p>
-    NFTs Out <br/>
-        {`${sixtyDayFrom}`} 
-    </p>
-     
-     
-      </div>
+      
       </div>
 
       <div className={NFTS.length>2?"Account_Recent_Transactions container":"Account_Empty_Transactions container"}> 
