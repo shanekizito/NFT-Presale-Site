@@ -1,0 +1,54 @@
+html{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #eeeeee;
+    
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #10fbd0;
+    
+}
+
+
+#csv-form{
+    margin-top: -750px;
+    margin-left: 750px;
+
+}
+
+table{
+    min-width: 900px;
+}
+
+.csv-button{
+    background-color: #090a0a;
+    color: #eeeeee;
+    border:  2px solid #10fbd0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
+.csv-input{
+    background-color: #090a0a;
+    color: #eeeeee;
+    border:  2px solid #10fbd0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+    margin-left: 10px;
+
+
+}

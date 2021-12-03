@@ -78,7 +78,7 @@ p{
 }
 
 .searchButton,.refreshButton{
-  height:65px;
+  height:55px;
   width:65px;
  font-size:17px;
  border-top-right-radius: 10px;
@@ -112,6 +112,7 @@ p{
 }
 .searchInput{
   height:48px;
+  width: fit-content;
   border-top-left-radius: 10px;
  border-bottom-left-radius: 10px;
  border:  2px solid #10fbd0;
@@ -290,7 +291,7 @@ a{
 .Account_Empty_Transactions{
   position: absolute;
   margin-left:1350px;
-  margin-top:-2780px;
+  margin-top:-3730px;
   width:330px;
   max-height:272vh;
   overflow: hidden;
@@ -331,13 +332,13 @@ a{
 
 .Account_Latest_Buys{
   overflow-y: scroll;
-  height:600px;
+  max-height:600px;
   padding:10px;
 }
 
 .Account_Latest_Sales{
   overflow-y: scroll;
-  height:600px;
+  max-height:600px;
   margin-top: 100px;
   margin-left: 25px;
   padding:10px;
