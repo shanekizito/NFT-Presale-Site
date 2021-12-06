@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SetBoughtDate from './App';
+import App from './App';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <SetBoughtDate />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

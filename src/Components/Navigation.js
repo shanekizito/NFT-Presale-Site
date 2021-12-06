@@ -7,7 +7,7 @@ const Navigation = () => {
        <h4 className="Nav_Logo">NFT.</h4>
        <div className="Nav_Links">
        <Link className="Nav_Pages"  to='/'>Home</Link>
-       <Link to='/dashboard'>Dashboard</Link>
+       <Link to='/'>Dashboard</Link>
        <Link to='https://github.com/shanekizito'>Faq</Link>
        </div>
 
