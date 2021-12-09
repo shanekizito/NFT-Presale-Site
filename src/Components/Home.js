@@ -37,10 +37,14 @@ const NFT_single = ({
 
 
 props) {
+
+  
  
 
 
   return(
+
+   
 
     <div className="Screen_container">
       

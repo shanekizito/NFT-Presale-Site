@@ -22,6 +22,7 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
+
 import { parse } from 'graphql';
 
 
@@ -42,7 +43,9 @@ export  default function App () {
   const [ID,setID]= useState(0);
 
 
-  const [NFTS, setNFTS] = useState([]);
+  const [SKIP,setSKIP]=useState(100);
+
+const [NFTS, setNFTS] = useState([]);
   
  const [testArray, seTestArrayy] = useState([]);
 
@@ -73,8 +76,11 @@ export  default function App () {
 
   const [SD_Sales,setSD_Sales]=useState([]);
 
-  const [SD_Buys,setSD_Buys]=useState([]); 
+  const [SD_Buys,setSD_Buys]=useState([]);
 
+  
+
+  const [Username,setUsername]=useState('name');
 
   const [immediateSales,setImmediateSales]=useState([]);
 
@@ -87,10 +93,9 @@ export  default function App () {
   
 
 
-
-async function LoadStats(ID){
-
- 
+  
+ async function LoadStats(ID){
+  
   const options = {method: 'GET'};
 
   const client = new ApolloClient({
@@ -101,11 +106,12 @@ async function LoadStats(ID){
 
 
 
+ 
 const allNFTS =  gql`
-      query Accounts($ID: String!) {
-        account(id:$ID){
+      query Accounts($ID: String! ) {
+        account(id:$ID ){
          id
-         tokens{
+         tokens(skip:$SKIP){
     registry{
       name
       id }
@@ -173,6 +179,7 @@ const CurrentNFTSschema =  gql`
 
 query Accounts($ID: String!) {
  account(id:$ID){
+ 
   tokens{
     registry{
       name
@@ -194,156 +201,7 @@ query Accounts($ID: String!) {
   
 
 
- fetch('https://api.etherscan.io/api?module=account&action=balance&address='+`${ID}` +'&tag=latest', options)
-  .then(response => response.json())
-  .then(response => setEthereumBalance(((parseInt(response.result))/1000000000000000000)).toFixed(2)) 
-  .catch(err => console.error(err));
-
-
-
-  const Options_Asset = {method: 'GET'};
-
-  fetch('https://api.opensea.io/api/v1/assets?owner='+ `${ID}`+'&order_direction=desc&offset=0&limit=50', Options_Asset)
-  .then(response => response.json())
-  .then(response => setAssetAmount(response.assets.length))
-  .catch(err => console.error(err));
-
  
-  const options_Event = {
-    method: 'GET',
-    headers: {Accept: 'application/json', 'X-API-KEY': '2d3ddf54946e4569b7cd1df8daca6e4a'}
-  };
-  
-
-
-
-
- 
-  
-  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=0&limit=300&occurred_after=1632850162000', options_Event)
-    .then(response => response.json())
-    .then(response => {
-     
-
-      const SD_asset_array=[];
-      setSD_NFT_Sale(SD_asset_array) ;
-      
-
-      for(var i=0;i<response.asset_events.length;i++){
-
-     
-        
-        var SD_SingleAsset=
-        {
-          
-          Date:response.asset_events[i].created_date? response.asset_events[i].created_date.slice(0,-16):'Empty',
-          price:response.asset_events[i].total_price/1000000000000000000,
-          seller: response.asset_events[i].seller!==null?response.asset_events[i].seller.address:"",
-          asset: response.asset_events[i].asset,
-      
-        }
-       
-
-        
-        SD_asset_array.push(SD_SingleAsset);
-   
-
-      
-
-         
-
-          
-
-    }
-    
-
-    
-
-   
-   
-   
-
-  
-  }).catch(err => console.error(err));
-
-  if (SD_NFT_Sale.length>2){
-    var SD_array_Recent_Sales=[];
-    var SD_array_Recent_Buys=[];
-    for (var i=0;i<NFT_Sale.length;i++){
-      if(SD_NFT_Sale[i].seller==ID){
-  
-        SD_array_Recent_Sales.push(SD_NFT_Sale[i]);
-        
-        
-      }
-      else{
-        SD_array_Recent_Buys.push(SD_NFT_Sale[i]);
-      }
-  
-      setSD_Sales(SD_array_Recent_Sales);
-      setSD_Buys(SD_array_Recent_Buys);  
-      }
-    }
-
-
-console.log(SD_Sales)
-    
-      
-
-
-    
-
-    
-
-
-  fetch('https://api.opensea.io/api/v1/events?account_address=0xd387a6e4e84a6c86bd90c158c6028a58cc8ac459&event_type=successful&only_opensea=false&offset=2000&limit=300', options_Event)
-    .then(response => response.json())
-    .then(response => {
-
-      
-      
-
-      const asset_array=[];
-      setNFT_Sale(asset_array) ;
-      
-
-      for(var i=0;i<response.asset_events.length;i++){
-
-     
-        
-        var SingleAsset=
-        {
-          
-          Date:response.asset_events[i].created_date? response.asset_events[i].created_date.slice(0,-16):'Empty',
-          price:response.asset_events[i].total_price/1000000000000000000,
-          seller: response.asset_events[i].seller!==null?response.asset_events[i].seller.address:"",
-          asset: response.asset_events[i].asset,
-      
-        }
-       
-
-        
-         asset_array.push(SingleAsset);
-   
-
-      
-
-         
-
-          
-
-    }
-    
-
-    
-
-   
-   
-   
-
-  
-  }).catch(err => console.error(err));
-
 
 const  RecentNFTS= client
 .query({
@@ -356,53 +214,9 @@ const  RecentNFTS= client
 ( result =>{
 
 
-
- console.log(result);
-
-
- 
-
-
 }
 
 )
-
-
-
-
-
-
-
-
-
-
- 
-
-console.log(NFT_Sale);
-
-
-if (NFT_Sale.length>2){
-  var array_Recent_Sales=[];
-  var array_Recent_Buys=[];
-  for (var i=0;i<NFT_Sale.length;i++){
-    if(NFT_Sale[i].seller==ID){
-
-      array_Recent_Sales.push(NFT_Sale[i]);
-      
-      
-
-    }
-    else{
-      array_Recent_Buys.push(NFT_Sale[i]);
-    }
-
-    setImmediateSales(array_Recent_Sales);
-    setImmediateBuys(array_Recent_Buys);  
-    }
-  }
-
-
-
 
 
 
@@ -412,48 +226,40 @@ if (NFT_Sale.length>2){
       query:allNFTS,
       variables: {
         ID: ID,
+      
       }
     })
     .then
-    ( result =>{try{
-  
+    ( result =>{  try {
       setTransfer(
         {
           name:result.data.account.transfersTo[0].token.registry.name,
           id:result.data.account.transfersTo[0].token.registry.id,
           date:new Date(result.data.account.transfersTo[0].timestamp * 1000).toLocaleDateString()
-        }
-        
+        }    
       )
-
-
 
       setReceived(
 
-        {
-
-        
+        {       
         name:result.data.account.transfersFrom[0].token.registry.name,
         id:result.data.account.transfersFrom[0].token.registry.id,
-        date:new Date(result.data.account.transfersFrom[0].timestamp * 1000).toLocaleDateString()
-        
+        date:new Date(result.data.account.transfersFrom[0].timestamp * 1000).toLocaleDateString()    
         }
         
-      
+    );
+    
   
-    )
+      var newNFTS=result.data.account.tokens;
+      console.log(newNFTS);
+      setNFTS(newNFTS)
+      }
 
-
-    setNFTS(result.data.account.tokens);
-  
-   
-    }
   
     catch(e){console.log(e)}})
   
 
     
-
 
     const latestFetch= client
     .query({
@@ -464,14 +270,11 @@ if (NFT_Sale.length>2){
     })
     .then
     ( result =>{try{
-     
-
-        
+         
          let LR_array=[];
          let LT_array=[];
         for(i=0;i<result.data.account.transfersTo.length;i++){
-        
-
+      
         const L_r={
           name:result.data.account.transfersTo[i].token.registry.name,
           Id:result.data.account.transfersTo[i].token.registry.id,
@@ -490,18 +293,15 @@ if (NFT_Sale.length>2){
          
         LT_array.push(L_T);
 
-
-       
-      
-      
       }
 
          setLatestReceived(LR_array);
          setLatestTransferred(LT_array);      
       
-  
        var sixtyDaysNftIn=[];
        var sixtyDaysNftOut=[];
+
+
        for(var i=0;i<result.data.account.transfersTo.length;i++){
          
       
@@ -511,8 +311,6 @@ if (NFT_Sale.length>2){
           sixtyDaysNftIn.push(result.data.account.transfersTo[i].id)
          
          }
- 
-
 
       };
 
@@ -558,119 +356,15 @@ if (NFT_Sale.length>2){
          
       setAccountPeriod(Account_Active)
         
-
-       
-       
-
       }
    
-    
-  
     catch(e){console.log(e)}})
-
-    
-
-  
-    
-  
-
-   
-  
-
-const handleChange = e => {
-
-  if(e.target.value!==''){
- 
-  
- 
-  console.log(ethereumBalance);
-
-}};
-
- 
-
-  
-
-    const upload= 
-  
-{
-
- NFTS_upload: NFTS,
-
- transfer_upload: transfer,
-
- received_upload:  received,
-
- latestTransferred_upload:  latestTransferred, 
-
- latestReceived_upload:  latestReceived,
-
- sixtyDayTo_upload: sixtyDayTo,
-
- sixtyDayFrom_upload:  sixtyDayFrom, 
-
- ethereumBalance_upload:  ethereumBalance, 
-
- assetAmount_upload:  assetAmount, 
-
- 
-
- account_period_upload: account_period,
-
- NFT_Sale_upload:  NFT_Sale,
-
- NFT_Sale_upload:  NFT_Sale,
- 
- SD_NFT_Sale_upload: SD_NFT_Sale, 
-
- SD_Sales_upload: SD_Sales, 
-
- SD_Buys_upload: SD_Buys,  
-
-
- immediateSales_upload: immediateSales, 
-
- immedateBuys_upload: immedateBuys, 
-
-
- username_upload:  username,
-
-
-};
-    if(upload.immedateBuys_upload.length>2){
-
-
-
-      axios.post("http://localhost:5000/stats/add", upload)
-      .then(res => console.log(res.data) );
-     
-      
-     }
-  
-
-
-
-
-
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   
-   
-    // [{name: "", age: 0, rank: ""},{name: "", age: 0, rank: ""}]
+
 
 
 
@@ -738,18 +432,16 @@ const handleChange = e => {
 
        console.log(e.target) 
 
-
-
-        }
-
-
-function handleRefresh(){
-  return "hi"
 }
 
-function handleChange(){
-  return "hi"
-}
+
+
+
+const handleChange = e => {
+  if(e.target.value!==''){ 
+  console.log(ethereumBalance);
+}};
+
 
 
 
@@ -759,28 +451,55 @@ const handleClick=(e) => {
 
    if (e.target.className=="address_upload"){
 
-      setID(e.target.innerHTML);
-      console.log(ID);
-       
+  setID(e.target.innerHTML);
+    
+  LoadStats(e.target.innerHTML);
 
-      if(ID==e.target.innerHTML)
-       LoadStats(ID);
-      
+}
 
-   }
-
- 
-       
-
-   
-  
+    var newUser = {    
+    ID:e.target.innerHTML,
+    Username:Username,                    
+    duration_upload:account_period,
+    assetAmount_upload:assetAmount,
+    NFT_stats: {
+    latestTransferred_upload:latestTransferred,  
+    latestReceived_upload:latestReceived,
+    sixtyDayTo_upload:sixtyDayTo,
+    sixtyDayFrom_upload:sixtyDayFrom,
+    received_upload:received,
+    transfer_upload:transfer,
   }
 
-    
+};
 
+
+
+
+
+ axios.post("http://localhost:5000/stats/add",newUser).then(res=>{
+   return res.data.insertedId;
+ }).then(res=>{
+
+
+  var res = res.replace(/^"|"$/g, )
+
+  console.log(res);
+  axios.get("http://localhost:5000/stats/get/"+res).then(response => console.log(response.data))
+ })
+ 
+
+
+
+ 
+
+ 
+
+  }
+      
     return(
 
-        <>
+      <>
 
 
       <Router>
@@ -853,15 +572,15 @@ const handleClick=(e) => {
 
         </form>
 
-       {()=>{
-         if(ID!==0){
-           return <Home
+       {
+        ID!==0?
+            (<Home
            
            
            ID={ID}
           
            
-          handleChange={handleChange()}
+          handleChange={handleChange}
            
            ethereumBalance={ethereumBalance}
            
@@ -896,17 +615,17 @@ const handleClick=(e) => {
            SD_Buys={SD_Buys}
            
            NFTS={NFTS}/>
-         }
-       }}
+            ):null
+       }
         
           <Routes>
-          <Route path='/' exact element={<Home
+          <Route path='/home' exact element={<Home
          
   
          ID={ID}
           
            
-          handleChange={handleChange()}
+          handleChange={handleChange}
            
            ethereumBalance={ethereumBalance}
            
