@@ -32,7 +32,6 @@ const NFT_single = ({
 
 
 
-
  export function Home(
 
 
@@ -49,8 +48,6 @@ props) {
     <div className="Screen_container">
       
      
-  
- 
       <button className="refreshButton" type="submit" onClick={props.handleRefresh}>Refresh <span><i class="fas fa-sync"></i> </span></button>
     <div className="Screen_container_inner">
    <div className="Row_zero">
@@ -61,16 +58,18 @@ props) {
      <p> {`${props.ID}`}</p>
 
 
-
      <h3 className="label">Account Balance</h3>
+
       <h4>{`${props.ethereumBalance}`}ETH <i class="fab fa-ethereum"></i></h4>
       <h3 className="label">NFTS in Wallet</h3>
      <h4>{`${props.assetAmount}`}</h4>
      <h3 className="label">Days account active</h3>
      <p> {`${props.account_period}`}</p>
-     
+     <h3 className="label">Maximum Holding Days(Above 0.15 ETH)</h3>
+     <p> {`${props.maxAverageHoldDuration}`}</p>
+     <h3 className="label">Maximum Holding Days(Below 0.15 ETH)</h3>
+     <p> {props.maxAverageHoldDuration2!==null?`${props.maxAverageHoldDuration2}`:"0"}</p>
      </div>
-     
 
      <div className="Account_SixtyDay_Averages container">
         <h3 className="label">60 days Averages</h3>
@@ -186,20 +185,14 @@ props) {
           return(
 
           
-          <p className="Latest_Stats_grid" key={i} >        
-       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {`${item.asset.collection.name}`}</span>
+            <p className="Latest_Stats_grid" key={i} >        
+            Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {item.asset!=='Empty'?`${item.asset.collection.name}`:"Empty"}</span>
+           
+           <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{item.Date?`${item.Date}`:"Empty"}</span> <br/>
+           Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{item.price?`${item.price}ETH`:"Empty"}</span>
+           </p>
+             )})
       
-      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.Date}`}</span> <br/>
-      Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.price}`}ETH</span>
-      </p>
-        )})
-        
-
-       
-
-
-
-
 
      :<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>Empty <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>Empty
         <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>Empty
@@ -219,23 +212,18 @@ props) {
       
        
 props.immediateSales.map((item,i)=>{
+
           return(
 
           
           <p className="Latest_Stats_grid" key={i} >        
-       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {`${item.asset.collection.name}`}</span>
+       Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {item.asset!=='Empty'?`${item.asset.collection.name}`:"Empty"}</span>
       
-      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.Date}`}</span> <br/>
-      Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{`${item.price}ETH`}</span>
+      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{item.Date?`${item.Date}`:"Empty"}</span> <br/>
+      Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{item.price?`${item.price}ETH`:"Empty"}</span>
       </p>
         )})
         
-
-       
-
-
-
-
 
      :<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>Empty <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>Empty
      <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>Empty
@@ -311,6 +299,7 @@ props.immediateSales.map((item,i)=>{
             />
           )
        }):<h5>None</h5> }
+       
        
       </div>
 
