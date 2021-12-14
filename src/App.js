@@ -5,10 +5,13 @@ import Home from '../src/Components/Home'
 import {Link , BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from '../src/Components/Navigation'
 
+import './shimmer.scss';
 
 import { useState } from 'react'
 
 import '../src/Components/Dashboard.css'
+
+import HomeLoading from '../src/Components/HomeLoading';
 
 
 
@@ -62,11 +65,9 @@ const [NFTS, setNFTS] = useState([]);
 
   const [sixtyDayFrom,setSixtyDayFrom]=useState(0);
 
-  const [ethereumBalance,setEthereumBalance]=useState(0);
+  const [ethereumBalance,setEthereumBalance]=useState('');
 
   const [assetAmount,setAssetAmount]=useState(0);
-
-
 
   const [account_period,setAccountPeriod]=useState(0);
 
@@ -84,10 +85,19 @@ const [NFTS, setNFTS] = useState([]);
 
   const [immediateSales,setImmediateSales]=useState([]);
 
-  const [immedateBuys,setImmediateBuys]=useState([]); 
+  const [immedateBuys,setImmediateBuys]=useState([]);
+
+  const [holdTime,setHoldtime]=useState([]);
+
+  const [maxAverageHoldDuration,setMaxAverageHoldDuration]=useState(0);
+
+  const [maxAverageHoldDuration2,setMaxAverageHoldDuration2]=useState(0);
+
 
   const [csvFile, setCsvFile] = useState();
   const [csvArray, setCsvArray] = useState([]);
+
+  const [loading,setLoading]=useState(0);
 
  
   
@@ -117,7 +127,7 @@ const allNFTS =  gql`
       id }
       
     }
-        transfersTo(orderBy:timestamp){
+        transfersTo(orderBy:timestamp orderDirection:asc){
             token{
                 id
                 registry{
@@ -168,7 +178,6 @@ const latestNFT =  gql`
             timestamp
        }
      }
-
 
    }
 
@@ -277,7 +286,7 @@ const  RecentNFTS= client
       
         const L_r={
           name:result.data.account.transfersTo[i].token.registry.name,
-          Id:result.data.account.transfersTo[i].token.registry.id,
+          id:result.data.account.transfersTo[i].token.registry.id,
           date:new Date(result.data.account.transfersTo[i].timestamp * 1000).toLocaleDateString(),
           token:result.data.account.transfersTo[i].token
         }
@@ -354,24 +363,20 @@ const  RecentNFTS= client
       
       const Account_Active=(new Date(latestReceived[0].date).getTime()-new Date(received.date).getTime())/(1000*60*60*24);
          
-      setAccountPeriod(Account_Active)
+      setAccountPeriod(Account_Active);
+      console.log(Account_Active,"Account_Active");
         
       }
-   
     catch(e){console.log(e)}})
-
-    }
+}
 
 
   
 
 
-
-
     const processCSV = (str, delim=',') => {
         const headers = str.slice(0,str.indexOf('\n')).split(delim);
         const rows = str.slice(str.indexOf('\n')+1).split('\n');
-
         const newArray = rows.map( row => {
             const values = row.split(delim);
             const eachObject = headers.reduce((obj, header, i) => {
@@ -380,15 +385,9 @@ const  RecentNFTS= client
             }, {})
             return eachObject;
         })
-
         setCsvArray(newArray)
 
-
-
     }
-
-
-
     const UploadFile=()=>{
         for(let i=0; i<csvArray.length; i++){
              
@@ -445,19 +444,38 @@ const handleChange = e => {
 
 
 
+
 const handleClick=(e) => {
 
   e.preventDefault()
 
-   if (e.target.className=="address_upload"){
 
+  setImmediateSales([]);
+
+    setSD_NFT_Sale([]);
+    setSD_Sales([]);
+    setSD_Buys([]);
+    setSD_Buys([]);
+    setEthereumBalance(0);
+    //setAccountPeriod(0);
+    setImmediateSales([]);
+    setImmediateBuys([]);
+    setHoldtime(0);
+    setNFT_Sale(0);
+    setMaxAverageHoldDuration(0);
+    setMaxAverageHoldDuration2(0);
+
+   if (e.target.className=="address_upload"){
+  
+
+  setLoading(1);
   setID(e.target.innerHTML);
-    
+
   LoadStats(e.target.innerHTML);
 
-}
 
-    var newUser = {    
+
+  var newUser = { 
     ID:e.target.innerHTML,
     Username:Username,                    
     duration_upload:account_period,
@@ -469,30 +487,45 @@ const handleClick=(e) => {
     sixtyDayFrom_upload:sixtyDayFrom,
     received_upload:received,
     transfer_upload:transfer,
+  
+  
   }
 
 };
 
 
+console.log(newUser.ID)
 
-
-
- axios.post("http://localhost:5000/stats/add",newUser).then(res=>{
+ axios.post("https://nftsass.herokuapp.com/stats/add",newUser).then(res=>{
    return res.data.insertedId;
  }).then(res=>{
 
-
-  var res = res.replace(/^"|"$/g, )
+  var res = res.replace(/^"|"$/g, );
 
   console.log(res);
-  axios.get("http://localhost:5000/stats/get/"+res).then(response => console.log(response.data))
- })
+
+
+  axios.get("https://nftsass.herokuapp.com/stats/get/"+res).then(response => {
+    setSD_NFT_Sale(response.data.NFT_stats.NFT_Sale);
+    setSD_Sales(response.data.NFT_stats.SD_Sales);
+    setSD_Buys(response.data.NFT_stats.SD_Buys);
+    setSD_Buys(response.data.NFT_stats.SD_Buys);
+    setEthereumBalance(response.data.ethereumBalance);
+    setAccountPeriod(response.data.duration);
+    setImmediateSales(response.data.NFT_stats.Sales);
+    setImmediateBuys(response.data.NFT_stats.Buys);
+    setHoldtime(response.data.HoldDuration);
+    setNFT_Sale(response.data.NFT_stats.NFT_Sale);
+    setMaxAverageHoldDuration(response.data.NFT_stats.maxAverageHoldDuration);
+    setMaxAverageHoldDuration2(response.data.NFT_stats.maxAverageHoldDuration2);
+    setLoading(0);
+  });
  
 
+});
 
 
- 
-
+}
  
 
   }
@@ -500,14 +533,9 @@ const handleClick=(e) => {
     return(
 
       <>
-
-
-      <Router>
-
-        <Navigation />
-
+     <Navigation />
         <form id='csv-form'>
-            <h4>Upload files</h4>
+            <h3>Submit .csv address file </h3>
             <input className="csv-input" 
             type='file'
              
@@ -571,9 +599,11 @@ const handleClick=(e) => {
 
 
         </form>
-
+  
+      {loading==1?<HomeLoading/>:''}
+        
        {
-        ID!==0?
+        immediateSales.length>1?
             (<Home
            
            
@@ -588,14 +618,12 @@ const handleClick=(e) => {
            
            account_period={account_period}
            
-           account_period={account_period}
            
            sixtyDayTo={sixtyDayTo}
            
            sixtyDayFrom={sixtyDayFrom}
            
            SD_Buys={SD_Buys}
-           
            
            
            SD_Sales={SD_Sales}
@@ -613,73 +641,18 @@ const handleClick=(e) => {
            immediateSales={immediateSales}
 
            SD_Buys={SD_Buys}
+
+           maxAverageHoldDuration={maxAverageHoldDuration}
+
+           maxAverageHoldDuration2={maxAverageHoldDuration2}
            
            NFTS={NFTS}/>
             ):null
        }
         
-          <Routes>
-          <Route path='/home' exact element={<Home
-         
-  
-         ID={ID}
           
-           
-          handleChange={handleChange}
-           
-           ethereumBalance={ethereumBalance}
-           
-           assetAmount={assetAmount}
-           
-           account_period={account_period}
-           
-           account_period={account_period}
-           
-           sixtyDayTo={sixtyDayTo}
-           
-           sixtyDayFrom={sixtyDayFrom}
-           
-           SD_Buys={SD_Buys}
-           
-           
-           
-           SD_Sales={SD_Sales}
-           
-           received={received}
-           
-           transfer={transfer}
-           
-           immedateBuys={immedateBuys}
-           
-           latestReceived={latestReceived}
-           
-           latestTransferred={latestTransferred}
-
-           immediateSales={immediateSales}
-
-           SD_Buys={SD_Buys}
-           
-           NFTS={NFTS}
-
-           
-
-           
-
-       
-          
-          />} />
-
-             
-          
-          </Routes>
-      </Router>
     </>
   
-
-
-
-
-
 
 
 
