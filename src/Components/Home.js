@@ -32,32 +32,16 @@ const NFT_single = ({
 
 
 
- export function Home(
-
-
-props) {
-
-  
- 
-
+ export function Home(props) {
 
   return(
-
-   
-
     <div className="Screen_container">
-      
-     
-      <button className="refreshButton" type="submit" onClick={props.handleRefresh}>Refresh <span><i class="fas fa-sync"></i> </span></button>
     <div className="Screen_container_inner">
    <div className="Row_zero">
      <div className="Account_Address container">
-
-       <h2 >Wallet Stats</h2>
-       <h3 className="label">Account Address</h3>
+       <h2  className="titles">Wallet Stats <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h2>
+       <h3 className="label">Account Address</h3>     
      <p> {`${props.ID}`}</p>
-
-
      <h3 className="label">Account Balance</h3>
 
       <h4>{`${props.ethereumBalance}`}ETH <i class="fab fa-ethereum"></i></h4>
@@ -72,7 +56,7 @@ props) {
      </div>
 
      <div className="Account_SixtyDay_Averages container">
-        <h3 className="label">60 days Averages</h3>
+        <h2 className="titles">60 days Averages</h2>
     <p>
     NFTs in<br/>
         {`${props.sixtyDayTo}`} 
@@ -99,50 +83,47 @@ props) {
      
      
      <div className="Account_Earliest_Stats container">
-        <h3 className="header">Earliest NFTS</h3>
+        <h3 className="titles">Earliest NFTS</h3>
          
-     
-
       <div className="Earliest_Stats_Column1">
-     <h4 className="label">Buys</h4>
+     
       <p className="Earliest_Stats_grid" >
+      <h4 className="label">Buys <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
         
        Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {props.SD_Buys.length>2?`${props.SD_Buys[props.SD_Buys.length-1].asset.collection.name}`:"Empty"}</span>
      <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Buys.length>2?`${props.SD_Buys[props.SD_Buys.length-1].Date}`:"Empty"}</span> <br/>
-     Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Buys.length>2?`${props.SD_Buys[props.SD_Buys.length-1].price}ETH`:"Empty"}</span>
+     Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Buys.length>2?`${props.SD_Buys[props.SD_Buys.length-1].price}ETH`:"Empty"}</span> <br/>
      
+
       </p>
      
     
       
 
-     <h4 className="label">Sale</h4>
       <p className="Earliest_Stats_grid" >
+        
+     <h4 className="label">Sale <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
        Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {props.SD_Sales.length>2?`${props.SD_Sales[props.SD_Sales.length-1].asset.collection.name}`:"Empty"}</span>
 
        <br/> Date <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Sales.length>2?`${props.SD_Sales[props.SD_Sales.length-1].Date}`:"Empty"}</span> <br/>
         Price <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Sales.length>2?`${props.SD_Sales[props.SD_Sales.length-1].price}ETH`:"Empty"}</span> <br/>
-        Address <i class="fas fa-calendar-alt"></i><br/> <span  className="labelecondary">{props.SD_Sales.length>2?`${props.SD_Sales[props.SD_Sales.length-1].address}`:"Empty"}</span>
+       
        </p>
-     
     
        </div>
 
        <div className="Earliest_Stats_Column2">
-        <h4 className="label">IN</h4>
+       
      
       <p className="Earliest_Stats_grid" >
-        
+      <h4 className="label">IN <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
        Name <i class="fas fa-dice-d6"></i> <br/> <span  className="labelecondary"> { props.received.name?`${props.received.name}`:"Empty"}</span> <br/> Date <i class="fas fa-calendar-alt"></i>   <br/>
        <span  className="labelecondary">{props.received.date?`${props.received.date }`:"Empty"} </span>  
       </p>
 
 
-    
-
-        <h4 className="label">OUT</h4>
-
       <p  className="Earliest_Stats_grid">
+      <h4 className="label">OUT <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
        <span  className="labelecondary"> </span>
        Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {props.transfer.name?`${props.transfer.name}`:"Empty"}</span>
       <br/> Date <i class="fas fa-calendar-alt"></i>
@@ -163,24 +144,23 @@ props) {
 
     <div className="Row_one">   
 
-     
     
 
       <div className="Account_Latest_Stats container">
 
 
-      <h4 className="header">Recent NFTS </h4> 
+      <h4 className="titles">Latest NFTS </h4> 
 
       <div className="Account_Latest_Column1">
 
+<div className="Account_Latest_owned">
+      <h4 className="label Buys-header">Buys <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
 
-      <h4 className="label Buys-header">Buys</h4>
 
  <div className="Account_Latest_Buys"> 
+
       {props.immedateBuys.length>2?
 
-      
-       
         props.immedateBuys.map((item,i)=>{
           return(
 
@@ -199,10 +179,12 @@ props) {
         </p>}
 
 </div>
-     
+</div>
       
 
-<h4 className="label Sells-header">Sells</h4>
+<div className="Account_Latest_owned">
+
+<h4 className="label Sells-header">Sells <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h4>
 
 <div className="Account_Latest_Sales"> 
 
@@ -215,7 +197,6 @@ props.immediateSales.map((item,i)=>{
 
           return(
 
-          
           <p className="Latest_Stats_grid" key={i} >        
        Name <i class="fas fa-dice-d6"></i> <br/><span  className="labelecondary"> {item.asset!=='Empty'?`${item.asset.collection.name}`:"Empty"}</span>
       
@@ -230,16 +211,14 @@ props.immediateSales.map((item,i)=>{
      </p>}
 
 </div>
-     
-      
-      
-
-      
         
      </div>
+     </div>
+
 
           
      <div className="Account_Latest_Column2">
+     <div className="Account_Latest_owned">
       <h4 className="label Sells-header">IN</h4>
       <div className="Account_Latest_In" > 
 
@@ -254,41 +233,39 @@ props.immediateSales.map((item,i)=>{
         </p>}</span>
       
      </div>
+     </div>
 
-      
-
-      
-     
+     <div className="Account_Latest_owned">
+           
       <h4 className="label Sells-header">OUT</h4>
 
-      
       <div className="Account_Latest_Out" > 
-        <span  className="labelecondary">  { props.latestTransferred.length>2?
-        
+        <span  className="labelecondary">  { props.latestTransferred.length>2?        
         props.latestTransferred.map((LT,i)=>{
           return(<p className="Latest_Stats_grid" key={i}><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>{LT.name} <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>{LT.id}
           <br/><span  className="labelPrimary"> Date <i class="fas fa-calendar-alt"></i> </span>   <br/>{LT.date}
           </p>) 
         }):<p className="Latest_Stats_grid"><span  className="labelPrimary"> Name <i class="fas fa-dice-d6"></i></span><br/>Empty <br/><span  className="labelPrimary"> Token Address <i class="fas fa-file-alt"></i></span> <br/>Empty
         <br/><span  className="labelPrimary"> Date  <i class="fas fa-calendar-alt"></i> </span>  <br/>Empty
-        </p>}</span>
+        </p>}
+        </span>
       
       </div>
-
-     
-    
-      </div>
       </div>
 
+      </div>
+      </div>
     </div>
 
-      
-      </div>
+      </div> 
 
-      <div className={props.NFTS.length>2?"Account_Recent_Transactions container":"Account_Empty_Transactions container"}> 
-       <h3 className="label">Current NFTS</h3>
-       
 
+<div className="NFTS-container container">
+
+      <h3 className="header-NFTS titles">NFT's in Wallet</h3>
+
+  <div className={props.NFTS.length>2?"Account_Recent_Transactions  ":"Account_Empty_Transactions "}> 
+  
        {props.NFTS.length>2?props.NFTS.map((nft,i) => {
           return (
             <NFT_single
@@ -302,12 +279,10 @@ props.immediateSales.map((item,i)=>{
        
        
       </div>
-
-
-      
-     
+           
     </div>
 
+</div>
   );  
 
 
