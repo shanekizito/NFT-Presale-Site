@@ -1,19 +1,12 @@
-import React from 'react'
-
-
-import Home from '../src/Components/Home'
-import {Link , BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from '../src/Components/Navigation'
-
-
+import React, { useEffect } from 'react'
+import NavBar from '../src/Components/NavBar'
+import Dashboard from '../src/Components/Dashboard'
 import { useState } from 'react'
-
 import '../src/Components/Dashboard.css'
-
-
-
+import '../src/Components/NavBar.css'
 import axios from 'axios';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 
 import {
   ApolloClient,
@@ -26,665 +19,208 @@ import {
 import { parse } from 'graphql';
 
 
-const username="User";
 
 
-
-
-
-
-
-
-
+const Address="0x91cdb6dda7ea6391e894152023247877e81dcc41";
 
  
 export  default function App () {
 
   const [ID,setID]= useState(0);
+  const [Volume,setVolume]= useState(0);
+  const [liquidity,setLiquidity]=useState(0);
+  const [Token0Price,setToken0Price]=useState(0);
+  const [DayVolume,setDayVolume]=useState(0);
+  const [DayLiquidity,setDayLiquidity]=useState(0);
+  const [WalletPortfolio,setWalletPortfolio]=useState([])
+  const [Token1Price,setToken1Price]=useState(0);
+  const [TokenHolders,setTokenHolders]=useState(0);
+  const [vol,setVol]=useState(0);
+  const [treasuryWallet,setTreasuryWallet]=useState(0);
+  const [AvaxPrice, setAvaxPrice]=useState(0);
+  const [HoursVolume,setHoursVolume]=useState(0);
 
 
-  const [SKIP,setSKIP]=useState(100);
+ useEffect(()=>{ 
 
-const [NFTS, setNFTS] = useState([]);
+   try{
+    async function LoadStats(address) {
   
- const [testArray, seTestArrayy] = useState([]);
-
-
-  const[transfer,setTransfer]=useState(0);
-
- const [received,setReceived]=useState('');
-
- const [latestTransferred,setLatestTransferred]=useState(0);
-
- const [latestReceived,setLatestReceived]=useState('');
-
- const [sixtyDayTo,setSixtyDayTo]=useState(0);
-
-  const [sixtyDayFrom,setSixtyDayFrom]=useState(0);
-
-  const [ethereumBalance,setEthereumBalance]=useState(0);
-
-  const [assetAmount,setAssetAmount]=useState(0);
-
-
-
-  const [account_period,setAccountPeriod]=useState(0);
-
-  const [NFT_Sale,setNFT_Sale]=useState([]);
-
-  const [SD_NFT_Sale,setSD_NFT_Sale]=useState([]);
-
-  const [SD_Sales,setSD_Sales]=useState([]);
-
-  const [SD_Buys,setSD_Buys]=useState([]);
-
-  
-
-  const [Username,setUsername]=useState('name');
-
-  const [immediateSales,setImmediateSales]=useState([]);
-
-  const [immedateBuys,setImmediateBuys]=useState([]); 
-
-  const [csvFile, setCsvFile] = useState();
-  const [csvArray, setCsvArray] = useState([]);
-
- 
-  
-
-
-  
- async function LoadStats(ID){
-  
-  const options = {method: 'GET'};
-
-  const client = new ApolloClient({
-    uri: 'https://api.thegraph.com/subgraphs/name/amxx/eip721-subgraph',
-    cache: new InMemoryCache()
-  });
-
-
-
-
- 
-const allNFTS =  gql`
-      query Accounts($ID: String! ) {
-        account(id:$ID ){
-         id
-         tokens(skip:$SKIP){
-    registry{
-      name
-      id }
-      
-    }
-        transfersTo(orderBy:timestamp){
-            token{
-                id
-                registry{
-                id
-                     name
-                     }
-                }
-            timestamp
-       }
-       transfersFrom(orderBy:timestamp orderDirection:asc){
-            token{
-                id
-                registry{
-                id
-                     name
-                     }
-                }
-            timestamp
-       }
-     }
-   }
-
-` ;
-
-
-const latestNFT =  gql`
-      query Accounts($ID: String!) {
-        account(id:$ID){
-         id
-        transfersTo(orderBy:timestamp orderDirection:desc){
-            token{
-                id
-                registry{
-                     name
-                     id
-                     }
-                }
-            timestamp
-       }
-       transfersFrom(orderBy:timestamp orderDirection:desc){
-            token{
-                id
-                registry{
-                id
-                     name
-                     }
-                }
-            timestamp
-       }
-     }
-
-
-   }
-
-` ;
-
-
-const CurrentNFTSschema =  gql`
-
-query Accounts($ID: String!) {
- account(id:$ID){
- 
-  tokens{
-    registry{
-      name
-      id
-      
-    }
-    uri
-
-   }
- }
-  
-}
-
-
-`
-;
-
- 
-  
-
-
- 
-
-const  RecentNFTS= client
-.query({
-  query:CurrentNFTSschema,
-  variables: {
-    ID:`"${ID}"`,
-  }
-})
-.then
-( result =>{
-
-
-}
-
-)
-
-
-
-
-    const demo= client
-    .query({
-      query:allNFTS,
-      variables: {
-        ID: ID,
-      
-      }
-    })
-    .then
-    ( result =>{  try {
-      setTransfer(
-        {
-          name:result.data.account.transfersTo[0].token.registry.name,
-          id:result.data.account.transfersTo[0].token.registry.id,
-          date:new Date(result.data.account.transfersTo[0].timestamp * 1000).toLocaleDateString()
-        }    
-      )
-
-      setReceived(
-
-        {       
-        name:result.data.account.transfersFrom[0].token.registry.name,
-        id:result.data.account.transfersFrom[0].token.registry.id,
-        date:new Date(result.data.account.transfersFrom[0].timestamp * 1000).toLocaleDateString()    
-        }
-        
-    );
+      const options = {method: 'GET'};
     
-  
-      var newNFTS=result.data.account.tokens;
-      console.log(newNFTS);
-      setNFTS(newNFTS)
+      const client = new ApolloClient({
+        uri: 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange',
+        cache: new InMemoryCache()
+      });
+      const headers = {
+        'Content-Type': 'application/json',
+        
       }
+      axios.get('https://api.zapper.fi/v1/balances-v3?addresses%5B%5D=0xfb4994bc10892027f1f6df5c5e982112d9714e66&api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241').then(res=>{
+        return res.data;
+      }).then(response=>{
+        
+        axios.get('https://api.covalenthq.com/v1/43114/tokens/0x6293Bd9D427ba0bFE40641F6fb9df061aea1e5bd/token_holders/?quote-currency=USD&format=JSON&block-height=11038903&page-number=0&page-size=300&key=ckey_6e2471ab4103439280beac7b031').then(res=>setTokenHolders(res.data.data.items.length));
 
-  
-    catch(e){console.log(e)}})
-  
+        var resString = response.split("},");
+        
+        var d=resString[6];
+        var f = d.replace(/"/g, " ");
+        var b=f.split(':{');
+        var h=b[2].split(',')
+        var avax=Number(h[3].split(':')[1]);
+        var avaxImage=b[3].split(',')[2].split('[')[1].split(']')[0];
+        setAvaxPrice(avax)
+        const avaxData = {name:'AVAX' , balance:avax,image:avaxImage}
 
+        var u=resString[10];
+        var v = u.replace(/"/g, " ");
+        var w=v.split(':{');
+        var x=w[1].split(',')
+        var usdc=Number(x[3].split(':')[1]);
+        var usdcImage=w[2].split(',')[2].split(':[')[1].split(']')[0];
+        
+        const usdcData={name:'USDC' , balance:usdc,image:usdcImage}
+
+
+        var e=resString[14];
+        var f = e.replace(/"/g, " ");
+        var g=f.split(':{');
+        var h=g[1].split(',')
+        var wbtc= Number(h[3].split(':')[1]);
+        var WbtcImage=g[2].split(',')[2].split(':[')[1].split(']')[0];
+        const WbtcData={name:'WBTC' ,balance:wbtc,image:WbtcImage}
+
+
+        var portfolioBalance=wbtc+usdc+avax;
+
+        const portfolio=[avaxData,usdcData,WbtcData];
+
+        setWalletPortfolio(portfolio);
+     
+        console.log(WalletPortfolio)
+
+        setTreasuryWallet(portfolioBalance.toFixed(0));
+      })
     
-
-    const latestFetch= client
-    .query({
-      query:latestNFT,
-      variables: {
-        ID: ID,
-      }
-    })
-    .then
-    ( result =>{try{
-         
-         let LR_array=[];
-         let LT_array=[];
-        for(i=0;i<result.data.account.transfersTo.length;i++){
-      
-        const L_r={
-          name:result.data.account.transfersTo[i].token.registry.name,
-          Id:result.data.account.transfersTo[i].token.registry.id,
-          date:new Date(result.data.account.transfersTo[i].timestamp * 1000).toLocaleDateString(),
-          token:result.data.account.transfersTo[i].token
-        }
-
-        LR_array.push(L_r);
-
-        const L_T={
-          name:result.data.account.transfersFrom[i].token.registry.name,
-          id:result.data.account.transfersFrom[i].token.registry.id,
-          date:new Date(result.data.account.transfersFrom[i].timestamp * 1000).toLocaleDateString()
-
-        }
-         
-        LT_array.push(L_T);
-
-      }
-
-         setLatestReceived(LR_array);
-         setLatestTransferred(LT_array);      
-      
-       var sixtyDaysNftIn=[];
-       var sixtyDaysNftOut=[];
-
-
-       for(var i=0;i<result.data.account.transfersTo.length;i++){
-         
-      
-         if(result.data.account.transfersTo[i].timestamp>1632850162){
-           
-          
-          sixtyDaysNftIn.push(result.data.account.transfersTo[i].id)
-         
-         }
-
-      };
-
-      setSixtyDayTo(sixtyDaysNftIn.length);
-
-
-      for(var i=0;i<result.data.account.transfersFrom.length;i++){
-         
-      
-        if(result.data.account.transfersFrom[i].timestamp>1632850162){
-          
-         
-          sixtyDaysNftOut.push(result.data.account.transfersFrom[i].id)
-        
-        }
-        
-
-        
-
-
-     };
-
-     setSixtyDayFrom(sixtyDaysNftOut.length);
-
-
-     var to_array=[]
-     var to_loop=result.data.account.transfersTo.length;
-     for(var e=0;e<to_loop;e++){
-       
-      
-       var to_NFT={
-          name:result.data.account.transfersTo[e].token.registry.name,
-          id:result.data.account.transfersTo[e].token.registry.id,
-          date:result.data.account.transfersTo[e].timestamp 
-       }
-       to_array.push(to_NFT)
-                
-      }
-
-
-      
-      const Account_Active=(new Date(latestReceived[0].date).getTime()-new Date(received.date).getTime())/(1000*60*60*24);
-         
-      setAccountPeriod(Account_Active)
-        
-      }
-   
-    catch(e){console.log(e)}})
-
-    }
-
-
-  
-
-
-
-
-    const processCSV = (str, delim=',') => {
-        const headers = str.slice(0,str.indexOf('\n')).split(delim);
-        const rows = str.slice(str.indexOf('\n')+1).split('\n');
-
-        const newArray = rows.map( row => {
-            const values = row.split(delim);
-            const eachObject = headers.reduce((obj, header, i) => {
-                obj[header] = values[i];
-                return obj;
-            }, {})
-            return eachObject;
-        })
-
-        setCsvArray(newArray)
-
-
-
-    }
-
-
-
-    const UploadFile=()=>{
-        for(let i=0; i<csvArray.length; i++){
-             
-      
     
-        const AddressFile= {
     
-                Csv_address_upload:csvArray[i].address,   
-                Csv_username_upload:csvArray[i].name,
-                
+     
+    const allNFTS =  gql`
+         query LiquidityPosition($Address: String!){
+          liquidityPositions(where: {pair:$Address}) {
+            pair {
+              volumeToken1
+            dayData{
+              volumeToken0}
+            
+              id
+              name
+            token0{
+              symbol
+              dayData{
+              priceUSD
+              volumeUSD
+    
+              liquidityUSD
+              }
+              volumeUSD
             }
+              token1Price
+              reserve0
+              reserve1
+              reserveUSD 
+            }
+            liquidityTokenBalance
+            
+          }
+         }
     
-            axios.post("http://localhost:5000/wallet/add", AddressFile)
-            .then(res => console.log(res.data) );
+       
     
-    }
+    ` ;
     
-
-    }
-
-
-    
-
-    const submit = () => {
-        const file = csvFile;
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const text = e.target.result;
-            console.log(text);
-            processCSV(text)
+    const demo= client
+        .query({
+          query:allNFTS,
+          variables: {
+          Address: Address,    
+          }
+        })
+        .then
+        ( result =>{  try {  
+        setVolume(Number(result.data.liquidityPositions[0].pair.volumeToken1).toFixed())
+        setToken0Price(Number(result.data.liquidityPositions[0].pair.token0.dayData[0].priceUSD).toFixed(5))
+        setDayVolume(Number(result.data.liquidityPositions[0].pair.token0.dayData[0].volumeUSD).toFixed())
+        setDayLiquidity(Number(result.data.liquidityPositions[0].pair.token0.dayData[0].liquidityUSD).toFixed())
         }
 
-        reader.readAsText(file);
-    }
+        catch(err){
+        console.log(err)
 
-
-    function uploadCsv(e){
-
-        e.preventDefault();
-
-       console.log(e.target) 
-
-}
-
-
-
-
-const handleChange = e => {
-  if(e.target.value!==''){ 
-  console.log(ethereumBalance);
-}};
-
-
-
-
-const handleClick=(e) => {
-
-  e.preventDefault()
-
-   if (e.target.className=="address_upload"){
-
-  setID(e.target.innerHTML);
+        }});
+   
     
-  LoadStats(e.target.innerHTML);
+      }
+    
+      LoadStats(Address);
+ 
+ 
+  }
+
+ catch(err){
+
+  console.log(err)
+}
+
+
+if(Volume>0){
+  setHoursVolume(Volume*84)
+  console.log(Volume*84);
 
 }
 
-    var newUser = {    
-    ID:e.target.innerHTML,
-    Username:Username,                    
-    duration_upload:account_period,
-    assetAmount_upload:assetAmount,
-    NFT_stats: {
-    latestTransferred_upload:latestTransferred,  
-    latestReceived_upload:latestReceived,
-    sixtyDayTo_upload:sixtyDayTo,
-    sixtyDayFrom_upload:sixtyDayFrom,
-    received_upload:received,
-    transfer_upload:transfer,
-  }
-
-};
+},[0]);
 
 
-
-
-
- axios.post("http://localhost:5000/stats/add",newUser).then(res=>{
-   return res.data.insertedId;
- }).then(res=>{
-
-
-  var res = res.replace(/^"|"$/g, )
-
-  console.log(res);
-  axios.get("http://localhost:5000/stats/get/"+res).then(response => console.log(response.data))
- })
- 
-
-
-
- 
-
- 
-
-  }
-      
-    return(
-
-      <>
-
-
-      <Router>
-
-        <Navigation />
-
-        <form id='csv-form'>
-            <h4>Upload files</h4>
-            <input className="csv-input" 
-            type='file'
-             
-                accept='.csv'
-                id='csvFile'
-                onChange={(e) => {
-                    setCsvFile(e.target.files[0])
-                }}
-            >
-            </input>
-            <br/>
-            <button className="csv-button" 
-                onClick={(e) => {
-                    e.preventDefault()
-                    if(csvFile)submit()
-                }}
-            >
-                Submit
-            </button>
-            <br/>
-            <br/>
-            {csvArray.length>0 ? 
-            <>
-                <table className="table container">
-                    <thead>
-                        <th>Index</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                    </thead>
-                    <tbody>
-                        {
-                            csvArray.map((item, i) => (
-                                <tr  key={i}
-
-                                onClick={handleClick}
-                                
-                                >
-                                    <td>{i+1}</td>
-                                    <td>{item.name}</td>
-                                    <td className="address_upload">{item.address}</td> 
-
-                                    
-                                
-                                </tr>
-                            ))
-
-                        }
-                    </tbody>
-                </table>
-
-                <button className="upload-button" 
-                onClick={(e) => {
-                    e.preventDefault()
-                    if(csvFile)UploadFile()
-                }}
-            >
-                Upload Addresses
-            </button>
-            </> : null}
-
-
-
-        </form>
-
-       {
-        ID!==0?
-            (<Home
-           
-           
-           ID={ID}
-          
-           
-          handleChange={handleChange}
-           
-           ethereumBalance={ethereumBalance}
-           
-           assetAmount={assetAmount}
-           
-           account_period={account_period}
-           
-           account_period={account_period}
-           
-           sixtyDayTo={sixtyDayTo}
-           
-           sixtyDayFrom={sixtyDayFrom}
-           
-           SD_Buys={SD_Buys}
-           
-           
-           
-           SD_Sales={SD_Sales}
-           
-           received={received}
-           
-           transfer={transfer}
-           
-           immedateBuys={immedateBuys}
-           
-           latestReceived={latestReceived}
-           
-           latestTransferred={latestTransferred}
-
-           immediateSales={immediateSales}
-
-           SD_Buys={SD_Buys}
-           
-           NFTS={NFTS}/>
-            ):null
-       }
-        
-          <Routes>
-          <Route path='/home' exact element={<Home
-         
+function DashboardFunc(){
   
-         ID={ID}
-          
-           
-          handleChange={handleChange}
-           
-           ethereumBalance={ethereumBalance}
-           
-           assetAmount={assetAmount}
-           
-           account_period={account_period}
-           
-           account_period={account_period}
-           
-           sixtyDayTo={sixtyDayTo}
-           
-           sixtyDayFrom={sixtyDayFrom}
-           
-           SD_Buys={SD_Buys}
-           
-           
-           
-           SD_Sales={SD_Sales}
-           
-           received={received}
-           
-           transfer={transfer}
-           
-           immedateBuys={immedateBuys}
-           
-           latestReceived={latestReceived}
-           
-           latestTransferred={latestTransferred}
+  return (
+    <
+  Dashboard Vol={Volume} Liquidity={DayLiquidity} Price={Token0Price}
+  dayVolume={DayVolume} dayLiquidity={DayLiquidity}
+  treasuryWallet={treasuryWallet}
+  TotalHolders={TokenHolders}
+  />)
+}
 
-           immediateSales={immediateSales}
-
-           SD_Buys={SD_Buys}
-           
-           NFTS={NFTS}
-
-           
-
-           
+ function Investment(WalletPortfolio) {
+ 
+  return (
+      <div className="coin-Array">
+        <p className="Asset-Holding">Asset </p>
+        <p className="Invested-Capital">Balance</p>
+      {WalletPortfolio.map((coin) => (
+          <div className="coin-investment">
+               <img src= {coin.image}/>
+               <p className="coin-name">{coin.name}</p>
+               <p>$ {coin.balance.toFixed()}</p>
+          </div>
+      )
+         
+      )}</div>)}
 
        
-          
-          />} />
-
-             
-          
+          return(
+            <>      
+        <Router>   
+        <NavBar/>
+          <Routes>
+          <Route path='/' exact element={DashboardFunc()} />
+          <Route path='/Investment' element={Investment(WalletPortfolio)}/>
           </Routes>
-      </Router>
-    </>
-  
-
-
-
-
-
-
-
-
-
-  
-
-    );
-          }
+        </Router>   
+            </>
+        
+              );
+    }
