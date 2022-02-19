@@ -1,385 +1,124 @@
-body{
-  background-color:rgb(7, 0, 20);
-  line-height:2.5rem;
-  letter-spacing: 3px;
-  
-}
-
-p{
-  font-size:10px;
-}
-.Screen_container{
-  margin-left: 150px;
-  margin-top: -20px;
-}
-
-
-
-
-.searchInput {
-  border:none;
-  background-color: aliceblue;
-  outline:none;
-  color: rgb(53, 53, 53);
-  font-size: 16px;
-  font-weight: 300;
-  transition: 0.4s;
-   
-  margin-top:-5px;
-  width: 260px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-
-}
-
-.label{
-   
-  color:rgb(139, 136, 136);
-  
-}
-
-p{
-  font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  border-radius: 16px;
-  margin:5px 0 0 0;
-  padding:6px;
-  
-}
-
-
-
-.container{
-  border-radius: 10px;
-  margin-left:20px;
-  width:fit-content;
-  color:white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding:20px;
-  font-size: 22px;
-  background-color: rgb(34, 32, 32);
-  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
-  border:1px silver;
-  
-  
-  margin-top:30px;
-  background: rgba(0, 0, 0, 0.849);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.671);
-  backdrop-filter: blur(2.7px);
-  -webkit-backdrop-filter: blur(2.7px);
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  
-}
-
-
-.Screen_container_inner{
-  display:flex;
-  flex-direction: column;
-}
-
-.searchButton,.refreshButton{
-  height:55px;
-  width:65px;
- font-size:17px;
- border-top-right-radius: 10px;
- border-bottom-right-radius: 10px;
- color:#10fbd0;
-  background-color:black;
- 
-  border:  2px solid #10fbd0;
-  border-left: 1px solid #10fbd0;
-}
-
-.refreshButton{
-  position:fixed;
-  margin-top:150px;
-  margin-left: -170px;
-  padding: 20px;
-  width:130px;
-  border-radius: 25px;
-}
-.searchButton:hover{
-  cursor: pointer;
-  
-
-}
-
-.refreshButton:hover {
-  cursor: pointer;
-  transform:scale(1.07);
-
-  
-}
-.searchInput{
-  height:48px;
-  width: fit-content;
-  border-top-left-radius: 10px;
- border-bottom-left-radius: 10px;
- border:  2px solid #10fbd0;
- border-right: 1px solid #10fbd0; 
-
-}
-.Account_Address{
-  height:685px;
-  width:520px;
-  font-size: 15px;
-  font-style: italic;
-  margin-right: 0px;
- 
-   
- 
-} 
-
-.Account_Address>p{
-  font-weight: 1000px;
-  font-size: 17px;
-}
-.Account_Address>p,.Account_Address>h4{
-  width:fit-content;
-  border-radius: 20px;
-  padding:12px;
-   
-  border-style: solid;
-border-color: #35bda4;
-}
-
-
-.Row_one{
-  display:flex;
-  flex-direction: row;
-  align-items: flex-start;
-   margin-left: 50px;
-}
-
-.Row_zero{
-  display:flex;
-  flex-direction: row;
-  align-items: flex-start;
-
-}
-
-.Account_Latest_Stats,.Account_Earliest_Stats{
-  display:flex;
-  flex-direction: row;
-  
-   
-  width: 65vw;
-  height:auto;
-}
-
-.Account_Latest_Stats{
-  margin-left:-20px;
-}
-
-.Earliest_Stats_Column2{
-  margin-left:230px;
-}
-
-.Earliest_Stats_Column1{
-  margin-left:-480px;
-  
-}
-
-
-.Account_Latest_Column2{
-  margin-left:200px;
-}
-
-
-
-.Account_Latest_Column1,  .Account_Latest_Column2,.Earliest_Stats_Column1,.Earliest_Stats_Column2{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width:fit-content;
-  height:fit-content;
- 
-  margin-top:60px;
-}
-
-.Account_Balance{
-  width:400px;
-  height:205px;
-}
-
-.Account_SixtyDay_Averages{
-  width:35vw;
-  height:690px;
-}
-
-
-p{
-  overflow: hidden;
-}
-
-
-html,body{
-  font-family: 'Times New Roman', Times, serif;
-  background-image: url('./images/background.jpg');
-  box-sizing: border-box;
-}
-
-.labelecondary{
-   
-  color:#10fbd0;
-  font-size: 18px;
- 
- }
-
- .header{
-   display:flex;
-   flex-direction: column;
-  margin-left:450px ;
-  
-  margin-top:20px;
- align-items: flex-start;
- font-size:25px;
-  color:white;
-  margin-bottom:20px;
-}
-
-.Nav_Bar{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width:83vw;
-  height:10vh;
-  padding: 10px 55px;
-}
-
 a{
-  color: white;
-  text-decoration: none;
-  margin:10px;
-  cursor: pointer;
-  
-}
-
-.fab{
-  margin:5px;
-  color:#ffffff;
-  font-size: 20px;
-  border-radius: 10px;
-  background-color: #10fbd0;
-  padding:10px;
-  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
-  border:8px silver;
-  cursor: pointer;
-  
-}
-
-.labelPrimary{
-  color:white;
-  font-size: 16px;
-  font-weight: 1500px;
-  
-  margin-top:10px;
-}
-
-.Account_Recent_Transactions{
-  position: absolute;
-  margin-left:1350px;
-  margin-top:-3735px;
-  width:330px;
-  max-height:186vh;
-  overflow-y: scroll;
-   
-}
-
-.Account_Empty_Transactions{
-  position: absolute;
-  margin-left:1350px;
-  margin-top:-3730px;
-  width:330px;
-  max-height:272vh;
-  overflow: hidden;
-
-}
-
-
-.Account_Earliest_Stats{
-  
-  height:auto;
-   
-  margin-left:-1300px;
-  margin-top: 800px;
-  width:65vw;
-}
-
-.Earliest_Stats_grid{
-  min-width: 300px;
-  min-height: 300px;
-  padding: 20px;
-}
-
-.Latest_Stats_grid{
-  min-width: 300px;
-  min-height: 100px;
-  padding: 20px;
-}
-
-.Account_Latest_Column1{
-  
-  margin-left:-410px;
-  
+   text-decoration:none;
    
   
-
- 
-}
-
-.Account_Latest_Buys{
-  overflow-y: scroll;
-  max-height:600px;
-  padding:10px;
-}
-
-.Account_Latest_Sales{
-  overflow-y: scroll;
-  max-height:600px;
-  margin-top: 100px;
-  margin-left: 25px;
-  padding:10px;
+   color:white;
+   font: weight 300;
 }
 
 
 
-body::-webkit-scrollbar-thumb {
-  width: 12px;     
-  background-color: blue;           
+.coin-Array{
+    margin-top:40px;
+    width:55vw;
+    height:82vh;
+    padding:30px;
+    margin-left:265px;
+    border-radius:1px;
+    color:rgb(255, 255, 255);
+   
+    border-radius: 8px;
+    background: rgba(177, 19, 19, 0.561);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(231, 24, 24, 0.692);
+    backdrop-filter: blur(1.2px);
+    -webkit-backdrop-filter: blur(1.2px);
+    border: 1px solid rgba(253, 106, 7, 0.938);
 }
 
-.Sells-header{
-  margin-top: 100px;
-  margin-bottom: 90px;
-  margin-left: 120px;
+.coin-investment{
+    display:flex;
+    border-radius:8px;
+    flex-direction:row;
+    margin-top:40px;
+    margin-left:50px;
+    width:800px;
+    height:100px;
+    align-items:center;
+    border-bottom:1px solid rgba(129, 123, 123, 0.178);
+    justify-content:space-around;
+    background-color:rgba(236, 136, 136, 0.123);
+}
+
+.Asset-Holding{
+    margin-left:190px;
+    margin-top:10px;
+    font-size:25px;
+    color:rgb(255, 255, 255);
+}
+
+.Invested-Capital{
+    margin-left:620px;
+    margin-top:-30px;
+    font-size:25px;
+    color:rgb(255, 255, 255);
+}
+.coin-name{
+    margin-left:-220px;
+}
+
+.coin-investment>img{
+    width:50px;
+    height:50px;
 }
 
 
+@media screen and (max-width: 1023px) {
 
-.Buys-header{
-  
- margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: 120px;
+    body{
+        overflow-x:hidden 
+    }
+
+    .coin-investment{
+        overflow-x: hidden;
+        display:flex;
+        border-radius:8px;
+        flex-direction:row;
+        margin-top:40px;
+        margin-left:0px;
+        width:280px;
+        height:100px;
+        align-items:center;
+        border-bottom:1px solid rgba(129, 123, 123, 0.178);
+        justify-content:space-around;
+        background-color:rgba(236, 136, 136, 0.123);
+    }
+    .Invested-Capital{
+        margin-left:190px;
+        
+        font-size:20px;
+        color:rgb(255, 255, 255);
+    }
+
+    .coin-name{
+        margin-left:20px;
+    }
+
+
+    .coin-Array{
+        margin-top:20px;
+        width:75vw;
+        height:82vh;
+        padding:30px;
+        margin-left:15px;
+        border-radius:1px;
+        color:rgb(255, 255, 255);
+        border-radius: 8px;
+        background: rgba(73, 22, 22, 0.561);
+        border-radius: 5px;
+        box-shadow: 0 4px 30px rgba(231, 24, 24, 0.692);
+        backdrop-filter: blur(1.2px);
+        -webkit-backdrop-filter: blur(1.2px);
+        border: 1px solid rgba(138, 138, 138, 0.226);
+    }
+
+    .Asset-Holding{
+        margin-left:10px;
+        margin-top:10px;
+        font-size:20px;
+        color:rgb(255, 255, 255);
+    }
+
+    
 }
 
-.Account_Latest_In{
-  
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-left: -25px;
- }
- 
-
- .Account_Latest_Out{
-
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-left: -35px;
-  margin-top: 105px;
-  padding:10px;
-
- }

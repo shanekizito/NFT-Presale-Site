@@ -1,65 +1,349 @@
-html{
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #eeeeee;
-    
-}
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100&family=Mulish:wght@200&family=Source+Code+Pro:wght@200&display=swap');
 
-td{
-    padding: 10px;
-    border-bottom: 1px solid #10fbd0;
-    
-}
-
-
-#csv-form{
-    margin-top: 120px;
-    margin-left: 550px;
+body{
+   
+    background-color:rgba(122, 8, 8, 0.993);
+    font-family: 'Source Code Pro', monospace;
+    background-image:url(bgImage.JPG);
+    background-repeat:no-repeat;
+    background-size:cover;
 
 }
 
-table{
-    min-width: 900px;
+
+*{
+    max-width:100vw;
 }
 
-.csv-button,.upload-button{
-    background-color: #090a0a;
-    color: #eeeeee;
-    border:  2px solid #10fbd0;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    cursor: pointer;
-    margin-left: 10px;
+.dashboard-container{ 
+    border-radius:15px;
+    width:68.5vw;
+    height:80.5vh;
+    margin-top:105px;
+    margin-left:100px;
+}
+
+.dashboard-card{
+margin-top:2px;
+Width: 384px;
+height:185px;
+padding-left:50px;
+margin-left:10px;
+border-radius:1px;
+color:rgb(255, 255, 255);
+background: rgba(177, 19, 19, 0.561);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(231, 24, 24, 0.692);
+backdrop-filter: blur(1.2px);
+-webkit-backdrop-filter: blur(1.2px);
+border: 1px solid rgba(138, 138, 138, 0.226);
+}
+
+.dashboard-card>h3,p{
+    font-weight:400;
+    color:rgb(255, 255, 255);
+}
+
+.fa-wallet,.fa-sort-numeric-up{
+    margin-left:500px;
+    font-size: 40px;
+    margin-top:-50px;
+}
+
+
+.row-1{
+    display:flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left:-9px;
 
 }
 
-.csv-input{
-    background-color: #090a0a;
-    color: #eeeeee;
-    border:  2px solid #10fbd0;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    cursor: pointer;
-    margin-left: 10px;
-
-
+.row-2{
+    display:flex;
+    flex-direction: row;
+    margin-top:15px;
+    margin-left:0px;
+   
 }
 
-#csv-form>h2{
+.dashboard-card>p{
+    font-weight:300;
+    font-size:20px;
+}
 
-    margin:20px;
+.treasury>h3{
+    margin-top:100px;
+    color:rgb(251, 251, 251);
+    margin-left:140px;
+    font-weight:300;
+    font-size:80px;
+  
+}
+
+.treasury>h2,.coin-data>h2{
+    font-weight:300;
     font-size:25px;
+    
+}
+.fa-wallet,.fa-sort-numeric-up{
+    color:rgb(255, 255, 255);
+    margin-right:10px;  
+}
+.Token-Metrics{
+display:flex;
+flex-direction: row;
+ padding:50px 0px;
+ font-weight:300;
+ font-size:20px;
 }
 
 
-.upload-button{
-    margin:20px;
+.Metric-Value{
+display:flex;
+flex-direction: column;
+margin-left:100px;
+font-weight:300;
+font-size:20px;
 }
+
+
+
+.Metric{
+    display:flex;
+    flex-direction: column;
+}
+
+.T-wallet{
+    margin-top:150px;
+    margin-left:150px;
+    font-size: 55px;
+    letter-spacing: 15px;
+}
+
+
+
+.treasury{
+border-radius:2px;
+width:580px;
+height:389px;
+ padding:50px;
+ color:rgb(255, 255, 255);
+ background: rgba(177, 19, 19, 0.561);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(231, 24, 24, 0.692);
+backdrop-filter: blur(1.2px);
+-webkit-backdrop-filter: blur(1.2px);
+border: 1px solid rgba(138, 138, 138, 0.226);
+}
+
+
+.day-volume,.day-liqidity,.total-holders{
+    font-size: 20px;
+    margin-top:20px;
+    letter-spacing: 5px;
+}
+
+.Token-Metrics{
+    padding:0px;
+}
+
+.token-price{
+    font-size:30px;
+    margin-top:30px;
+    letter-spacing: 2px;
+}
+
+.coin-data{
+ border-radius:2px;
+ margin-left:20px;
+ width:570px;
+ padding:50px;
+color:rgb(255, 255, 255);
+background: rgba(177, 19, 19, 0.561);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(231, 24, 24, 0.692);
+backdrop-filter: blur(1.2px);
+-webkit-backdrop-filter: blur(1.2px);
+border: 1px solid rgba(138, 138, 138, 0.226);
+}
+.Metric-data>p,.Metric-Value>p{
+margin-top:15px;
+letter-spacing: 1px;
+}
+
+.Metric-data>h3,.Metric-Value>h3{
+    color:rgb(236, 236, 236);
+}
+
+
+@media only screen and (max-width: 780px) {
+    body{
+        overflow-x:hidden 
+    }
+
+    .day-volume,.day-liqidity,.total-holders{
+        font-size: 10px;
+        margin-top:20px;
+        letter-spacing: 5px;
+    }
+
+    .Metric-data{
+        width:100px;
+    }
+
+    .dashboard-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    overflow:hidden;
+    border-radius:25px;
+    width:700px;
+    height:130vh;
+    margin-top:0px;
+    margin-left:-20px;
+    }
+
+    .row-1{
+        display:flex;
+        flex-direction: row;
+        flex-wrap:no-wrap;
+        margin-top: 50px;
+        margin-left:40px;
+    }
+
+    .Metric-data>p,.Metric-Value>p{
+       
+        letter-spacing: 1px;
+        }
+       
+        
+    .row-2{
+        display:flex;
+        flex-direction: row;  
+        flex-wrap:wrap;
+        margin-left:10px;
+        margin-top:-150px;
+       
+    }
+    .dashboard-card{
+        margin-top:2px;
+        Width: 100px;
+        height:135px;
+        padding-left:10px;
+        border-radius:1px;
+    }
+
+    .dashboard-card>p{
+        font-weight:900;
+        font-size:15px;
+    }
+
+    .treasury{
+        margin-top:10px;
+        margin-left:30px;
+        border-radius:2px;
+        width:580px;
+        height:300px;
+        padding:20px;
+    }
+
+    .treasury>h3{
+        margin-top:20px;
+        color:rgb(251, 251, 251);
+        margin-left:10px;
+        font-weight:300;
+        font-size:20px;
+      
+    }
+    .T-wallet{
+        margin-top:30px;
+        margin-left:10;
+        font-size: 20px;
+        letter-spacing: 5px;
+    }
+
+    .coin-data{
+        margin-top:-20px;
+        border-radius:2px;
+        margin-left:30px;
+        width:66vw;
+        height:350px;
+        padding:50px;
+    }
+
+    .dashboard-card>h3,p{
+        font-weight:400;
+        color:rgb(255, 255, 255);
+        font-size:15px;
+    }
+
+    .fa-wallet,.fa-sort-numeric-up{
+        margin-left:250px;
+        font-size: 30px;
+      
+    }
+    .fa-sort-numeric-up{
+        margin-left:220px;
+        font-size: 30px;
+        margin-top:-190px;
+    }
+
+    .treasury>h2{
+        margin-bottom:-20px;
+        margin-right:20px;
+    }
+  }
+
+  @media only screen and (max-width: 400px)  {
+    .row-1{
+        display:flex;
+        flex-direction: row;
+        flex-wrap:no-wrap;
+        margin-top: 50px;
+        margin-bottom:-40px;
+        margin-left:30px;
+    
+    }
+
+    .row-2{
+   margin-top:-10px;
+    }
+    
+    .dashboard-container{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        overflow:hidden;
+        width:400px;
+        height:130vh;
+        margin-top:0px;
+        margin-left:-20px;
+        }
+    .treasury{ 
+        margin-bottom:5px;
+        margin-left:30px;
+        border-radius:5px;
+        width:290px;
+        height:100px;
+        padding:20px;   
+    }
+
+    .coin-data{
+        border-radius:5px;
+        margin-top:-15px;
+        height:340px;
+        padding-left:20px;
+        width:270px;
+    }
+
+    .dashboard-card{
+        margin-top:2px;
+        Width: 90px;
+        height:135px;
+        padding-left:10px;
+        border-radius:1px;
+    }
+
+
+  }
