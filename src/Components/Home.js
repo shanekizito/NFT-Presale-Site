@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '../App.css';
 import {Link , BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import App from '../App'
+import App from '../Main'
 
 
 import {
@@ -39,22 +39,20 @@ const NFT_single = ({
     <div className="Screen_container_inner">
    <div className="Row_zero">
      <div className="Account_Address container">
-       <h2  className="titles">Wallet Stats <span><a> <span><i class="fas fa-location-arrow"></i></span></a></span></h2>
-       <h3 className="label">Account Address</h3>     
-     <p> {`${props.ID}`}</p>
-     <h3 className="label">Account Balance</h3>
+       <h2  className="titles">Wallet Stats </h2>
+      <div className="wallet_stats_wrapper">
+       <h3 className="label"> Address</h3>     
+     <p> {`${props.ID+'. . . . . . . . . . '}`}</p>
+    <div className="ethBalance">
+     <h3 className="label"> Balance</h3>
 
-      <h4>{`${props.ethereumBalance}`}ETH <i class="fab fa-ethereum"></i></h4>
-      <h3 className="label">NFTS in Wallet</h3>
-     <h4>{`${props.assetAmount}`}</h4>
-     <h3 className="label">Days account active</h3>
-     <p> {`${props.account_period}`}</p>
-     <h3 className="label">Maximum Holding Days(Above 0.15 ETH)</h3>
-     <p> {`${props.maxAverageHoldDuration}`}</p>
-     <h3 className="label">Maximum Holding Days(Below 0.15 ETH)</h3>
-     <p> {props.maxAverageHoldDuration2!==null?`${props.maxAverageHoldDuration2}`:"0"}</p>
+      <h4 >{`${props.ethereumBalance}`}ETH <i class="fab fa-ethereum"></i></h4>
+     
      </div>
-
+     </div>
+     </div>
+     
+     
      <div className="Account_SixtyDay_Averages container">
         <h2 className="titles">60 days Averages</h2>
     <p>
@@ -76,11 +74,40 @@ const NFT_single = ({
     Sale<br/>
         {`${props.SD_Sales.length}`} 
     </p>
+<div className="nft_snipes">
+    <div className="nft_picks container">
+     <h3 className="titles">Account</h3>
+     <div className="nft_picks_inner">
+     <h4 className="label">NFTs owned</h4>
+    <p> 98</p>
+     <h4 className="label">Days account active</h4>
+     <p> {`${props.account_period}`}</p>
+     <h4 className="label">Diamond hands (Above 0.15 ETH)</h4>
+     <p> {`${props.maxAverageHoldDuration} Days` }</p>
+     <h4 className="label">Diamond hands (Below 0.15 ETH)</h4>
+     <p> {props.maxAverageHoldDuration2!==null?`${props.maxAverageHoldDuration2}Days`:"0"}</p>
+     </div>
+     </div>
+     <div className="Account_stats container">
+
+<h3 className="titles">Hot picks <span><img src="https://img.icons8.com/emoji/48/000000/fire.png"/></span></h3>
+
+<div className="Account_stats_inner">
+<h4 className="label">Most expensive asset</h4>
+<p>{`${props.expensive_assets.asset.name}`} </p>
+<h3>{`${props.expensive_assets.price}`}ETH </h3>
+
+<p> <img className="expensive_asset_image" src={`${props.expensive_assets.asset.image_url}`}/></p>
+<h4 className="label">Highest asset amount</h4>
+<p> {`${props.maxAverageHoldDuration}`}</p>
+<h4 className="label">Highest Sell</h4>
+<p> {props.maxAverageHoldDuration2!==null?`${props.maxAverageHoldDuration2}`:"0"}</p>
+</div>
+</div>
+</div>
 
      
-     
       </div>
-     
      
      <div className="Account_Earliest_Stats container">
         <h3 className="titles">Earliest NFTS</h3>

@@ -1,0 +1,636 @@
+body{
+  font-family: 'Roboto', sans-serif;
+    letter-spacing:3.5px;
+}
+
+.homepage-screen{
+    background-color: #05010f;
+}
+
+.hero-container{
+    padding: 20px;
+    border-radius: 5px;
+    height:60vh;
+}
+
+.hero-title{
+    margin-top:180px;
+    margin-left:-130px;
+    width:50vw;
+    font-size: 35px;
+    font-weight: bold;
+   
+    text-align: center;
+    background: #71DB07;
+background: -webkit-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: -moz-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+}
+
+
+.hero-subtitle{
+    margin-top:40px;
+    margin-left:80px;
+    width:35vw;
+    font-size: 17px;
+    
+    color: rgb(199, 198, 198);
+    text-align: center;
+}
+
+.hero-buttons{
+    margin-top:90px;
+    margin-left: 170px;
+    
+}
+
+
+.hero-button{
+    border: none;
+    margin-left:10px;
+    color:white;
+    width:150px;
+    height:50px;
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    background: linear-gradient(59deg, rgb(7, 233, 75) 11%, rgba(44,224,12,1) 100%);
+}
+
+.hero-button-2{
+    border: none;
+    margin-left:20px;
+    color:rgb(7, 233, 75);
+    background-color:rgba(44, 224, 12, 0.055);
+    width:150px;
+    height:50px;
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+   border:  2px solid rgb(7, 233, 75);
+}
+
+.hero-button-2>.fa-external-link-alt{
+    margin-left:10px;
+    color:rgb(7, 233, 75);
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+.section-container{
+     display:flex;flex-direction: row;
+    padding: 20px;
+    border-radius: 5px;
+    
+    height:60vh;
+
+}
+
+.section-container>img{
+   margin-left:-500px;
+   margin-top:280px;
+    width:700px;
+    height:400px;
+    border-radius: 10px;
+}
+
+.section-title>h1{
+    font-size:30px;
+    font-weight: bold;
+    margin-left:500px;
+    margin-top:150px;
+    margin-bottom:120px;
+   
+    background: #71DB07;
+background: -webkit-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: -moz-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.section-title>h2{
+    font-size:20px;
+    font-weight: 500px;
+    margin-left:100px;
+    margin-top:90px;
+    width:30vw;
+}
+
+
+.section-container-2{
+    display:flex;flex-direction: row;
+    padding: 20px;
+    border-radius: 5px;
+   margin-top:600px;
+    height:60vh;
+
+
+}
+
+.section-container-2>img{
+    width:800px;
+    height:400px;
+    margin-left:60px;
+    margin-top:300px;
+}
+
+
+.section-title-2>h2{
+    font-size:20px;
+    font-weight: 500px;
+    margin-left:100px;
+    margin-top:170px;
+    margin-bottom:100px;
+    width:30vw;
+
+}
+
+.section-title-2>h1{
+    font-size:30px;
+    font-weight: bold;
+    margin-left:500px;
+    margin-top:150px;
+    margin-bottom:140px;
+    background: #71DB07;
+background: -webkit-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: -moz-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.section-container-3{
+    display:flex;flex-direction: row;
+    padding: 20px;
+    border-radius: 5px;
+    height:60vh;
+}
+
+.section-container-3>img{
+    width:800px;
+    height:120px;
+    margin-left:0px;
+    margin-top:290px;
+}
+
+.section-title-3>h2{
+    font-size:20px;
+    font-weight: 500px;
+    margin-left:100px;
+    margin-top:90px;
+    width:30vw;
+
+}
+.section-container-card{
+   padding: 20px;
+   padding-left: 100px;
+    border-radius: 5px;
+    height:60vh;
+}
+
+.section-title-card>h1{
+font-size: 35px;
+line-height: 55px;
+font-style: normal;
+color:rgb(202, 197, 197);
+
+}
+.section-container-card{
+    display:flex;flex-direction: row;
+    justify-content:flex-start;
+    border-radius: 5px;
+    margin-left:100px;
+    margin-top:300px;
+    height:25vh;
+    width:79vw;
+    background-color: #110433;
+
+}
+
+.bottom{
+   
+    border-radius: 5px;
+    margin-left:0px;
+    margin-top:300px;
+    height:45vh;
+    width:92vw;
+    background-color: #070116;
+    gap: 0px;
+}
+
+.footer-container{
+
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width:auto;
+    margin-left: 200px;
+}
+
+.Footer-subscription{
+    width:30vw;
+}
+
+.footer-row-2,.footer-col-3{
+    margin-left:100px;
+}
+
+.Footer-subscription{
+    margin-top:40px;
+}
+
+.subscribe-button{
+    border: none;
+    margin-left:10px;
+    color:white;
+    background-color: #1104331a;
+    margin-top:0px;
+    width:150px;
+    height:50px;
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+   border: 1px solid rgb(7, 233, 75);
+
+}
+.footer-input{
+    width:330px;
+    padding:10px;
+    height:30px;
+    border-radius: 5px;
+    border:none;
+    margin-top:20px;
+    margin-left:10px;
+    font-size: 18px;
+    background-color: rgba(7, 233, 75, 0.055);
+    color:rgb(255, 255, 255);
+}
+.section-card-container>h3{
+    font-size:20px;
+    font-weight: 500px;
+    margin-left:180px;
+    color:#a3a3a3;
+    width:45vw;
+
+}
+
+.section-card-container>button{
+    border: none;
+    margin-left:180px;
+    color:white;
+    background-color: #1104331a;
+    margin-top:10px;
+    width:150px;
+    height:50px;
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+   border: 1px solid rgb(7, 233, 75);
+    
+}
+.section-title-3>h1{
+    font-size:30px;
+    font-weight: bold;
+    margin-left:530px;
+    margin-top:180px;
+    margin-bottom:100px;
+    background: #71DB07;
+background: -webkit-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: -moz-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+
+
+.section-container-4{
+
+    display:flex;flex-direction: row;
+    
+    padding: 20px;
+    border-radius: 5px;
+    
+    height:60vh;
+
+}
+
+.section-container-4>img{
+    width:400px;
+    height:300px;
+    margin-left:-500px;
+    margin-top:230px;
+}
+
+.section-title-4>h2{
+    font-size:20px;
+    font-weight: 500px;
+    margin-left:100px;
+    margin-top:90px;
+    width:30vw;
+
+}
+
+.section-title-4>h1{
+    font-size:30px;
+    font-weight: bold;
+    margin-left:500px;
+    margin-top:80px;
+    margin-bottom:20px;
+    background: #71DB07;
+background: -webkit-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: -moz-linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+background: linear-gradient(to right, #71DB07 0%, #1DCFAB 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.hero-image>img,.hero-image-2>img{
+
+  height: 250px;
+  width: 250px;
+  padding:20px;
+}
+
+.hero-image{
+    height: 420px;
+    width: 360px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-top:170px;
+    margin-right:20px;
+}
+
+.hero-image>h3{
+color: #272222;
+margin-top:-20px;
+margin-left:110px;
+}
+
+
+.hero-image-2{
+    height: 400px;
+    width: 360px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-top:110px;
+
+}
+
+.hero-container-outer{
+display:flex;   
+justify-content:flex-start;
+}
+
+.wrap-hero{
+    margin-top:-600px;
+    margin-left:740px;
+    display: flex;
+    flex-direction: row;
+    
+  }
+  
+  .timer-hero{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    margin-left: 1rem;
+    gap: 20px;
+    color:red;
+    margin-top: -5px;
+  
+  }
+  
+  .days-hero{
+    background-color: blanchedalmond;
+    padding: 6px;
+    font-size: 12px;
+  }
+  
+  
+  .hours-hero{
+    background-color: blanchedalmond;
+    padding: 6px;
+    font-size: 12px;
+  }
+  .mins-hero{
+    background-color: blanchedalmond;
+    padding: 6px;
+    font-size: 12px;
+  }
+  
+  .sec-hero{
+    background-color: blanchedalmond;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .asset-button{ 
+    border:none;
+    margin-left:10px;
+    color: rgb(66, 64, 64);
+    width:130px;
+    height:50px;
+    margin-left: 190px;
+    margin-top:-55px;
+    font-size: 18px;
+    font-style: italic;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    background: linear-gradient(59deg, rgba(7, 233, 75, 0.329) 11%, rgba(44, 224, 12, 0.349) 100%);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+   
+}
+
+
+.hero-bid>p{
+    margin-left: 20px;
+    margin-top: 35px;
+    color: rgb(41, 40, 40);
+    font-size:20px;
+
+}
+
+.hero-bid{
+    border-top: 1px solid rgb(66, 64, 64);
+    display:flex;
+    flex-direction:column;
+}
+
+
+
+.Account_SixtyDay_Averages-home{
+    margin-top: -20px;
+    margin-left: -20px;
+    width:300px;
+  
+   
+    
+}
+
+.nft_snipes-home{
+   display:flex;flex-direction: row;
+   justify-content:flex-start;
+     width:1000px;
+     height:900px;
+     margin-left:80px;
+     margin-bottom: 100px;
+     
+}
+
+.nft_picks-home>.titles{
+    padding-left:50px;
+
+}
+
+
+
+.nft_picks-home{
+   width:800px;
+   
+ }
+
+.nft_picks_inner-home{
+   
+}
+
+.Account_stats-home{
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    
+}
+
+
+
+.Row_zero-home{
+    display:flex;flex-direction: row;
+    margin-bottom: 100px;
+}
+
+
+
+.Row_zero{
+    width:600px;
+    height:500px;
+    margin-bottom: 100px;
+}
+
+
+
+.Account_Address-home{
+    font-style: bold;
+    height: 440px;
+    width: 360px;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 100px;
+    margin-bottom: -250px;
+    background: rgb(9, 214, 105);
+}
+
+
+
+.nft_snipes-home{
+
+
+}
+
+.nft_snipes-home>{
+    
+
+}
+
+.nft_picks-home {
+    margin-left:200px;
+    width: 330px;
+    height:640px;
+}
+
+.nft_picks_inner{
+    padding:20px;
+    padding-top:4px;
+}
+.nft_picks_inner>.label,.Account_stats_inner-home>.label{
+   font-size:15px;
+   margin-bottom:0px;
+}
+
+.nft_picks_inner>p,.Account_stats_inner-home>p{
+    padding-left: 10px;
+    width: 200px;
+    font-size:14px;
+    border:1px solid rgba(24, 23, 23, 0.514);
+}
+
+.Account_stats-home{
+    margin-left:100px;
+    margin-top:30px;
+    width:340px;
+    height:640px;
+}
+
+.Account_stats_inner-home{
+    padding:15px;
+
+}
+
+.expensive-af{
+    background-color: #f0f0f0;
+    color:black;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.expensive-af>{
+    border-radius: 10px;
+}
+
+.expensive-af>img {
+    width: 30%;
+    height: 60%;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom:5px;
+    
+  
+}
+
+.expensive-af-inner>h5{
+    margin-top:-10px;
+    margin-bottom:-10px;
+    margin-left:10px;
+
+}
+.expensive-af>p{
+   border:none;
+
+}
+
+.Account_stats-home>.titles{
+   
+
+    padding-left:60px;
+    height:50px;
+}
+.Account_Address-home>.titles{
+    padding-left:80px;
+   
+}
