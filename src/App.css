@@ -1,6 +1,26 @@
+<<<<<<< HEAD
 *{
   overflow-x:hidden;
 
+=======
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Orbitron:wght@400;900&family=Permanent+Marker&display=swap');
+body{
+  background-color: #0d0327;
+  line-height:2.5rem;
+  letter-spacing: 3px;
+  
+}
+
+p{
+  font-size:10px;
+}
+
+.Screen_container{
+  margin-left: 150px;
+  margin-top: -20px;
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }
 
 
@@ -28,6 +48,7 @@ body{
   font-size: 24px;
   line-height: 28px;
   font-weight: 300;
+<<<<<<< HEAD
   line-height: 1.75rem;
   padding-bottom: 2.3632px;
   padding-top: 2.3632px;
@@ -49,4 +70,921 @@ form>p{
 
 input{
   font-size:1rem;
+=======
+  transition: 0.4s;
+   
+  margin-top:-5px;
+  width: 260px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+}
+
+.label{
+   
+  color:rgb(139, 136, 136);
+  
+}
+
+p{
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  border-radius: 16px;
+  margin:5px 0 0 0;
+  padding:6px;
+  
+}
+
+
+
+.container{
+  border-radius: 10px;
+  margin-left:20px;
+  width:fit-content;
+  color:white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  font-size: 22px;
+  background-color: #0f0e0e69;
+  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
+  border:1px silver;
+  margin-top:30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.671);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  
+}
+
+
+.Screen_container_inner{
+  display:flex;
+  flex-direction: column;
+}
+.searchButton{
+  height:55px;
+  width:65px;
+ font-size:17px;
+ border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px;
+ color:#10fbd0;
+  background-color:black;
+ 
+  border:  2px solid #10fbd0;
+  border-left: 1px solid #10fbd0;
+}
+
+
+
+
+
+.refreshButton:hover {
+  cursor: pointer;
+  transform:scale(1.07);
+
+  
+}
+
+
+
+.Account_Address>p{
+  font-weight: 1000px;
+  font-size: 17px;
+}
+.Account_Address>p,.Account_stats>p.Account_Address>h4,.Account_stats_inner>h3{
+  width:fit-content;
+  border-radius: 20px;
+  padding:12px;
+   margin:10px;
+  border-style: solid;
+border-color: #35bda4;
+}
+
+.Account_Address>.label{
+margin:10px;
+}
+
+
+.Row_one{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+   margin-left: 50px;
+}
+
+.Row_zero{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+}
+
+.Account_Latest_owned{
+  display:block;
+  
+}
+.Account_Latest_Stats,.Account_Earliest_Stats{
+ display:block;
+   
+margin-left:400px;
+  
+}
+
+.Account_Earliest_Stats{
+  height:600px;
+}
+
+.Account_Latest_Stats{
+  margin-left:-20px;
+
+  margin-bottom: 50px;
+  width:65vw;
+}
+
+
+.Earliest_Stats_Column2{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width:fit-content;
+  height:fit-content;
+  margin-top:-120px;
+  margin-left:-100px;
+  margin-bottom:40px;
+}
+
+
+.Earliest_Stats_Column1{
+  
+ 
+  display:flex;
+  flex-direction: row;
+  margin-left:-100px;
+  align-items: flex-start;
+  height:600px;
+  margin-top:0px;
+
+}
+
+
+
+
+.Account_Latest_Column2{
+  margin-left:200px;
+}
+
+
+
+
+
+.Account_Balance{
+  width:400px;
+  height:205px;
+}
+
+.Account_SixtyDay_Averages{
+  width:35vw;
+  height:490px;
+}
+
+.Account_SixtyDay_Averages>p{
+  margin:16px;
+  font-size:17px;
+}
+
+
+p{
+  overflow: hidden;
+}
+
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  box-sizing: border-box;
+  
+}
+
+.labelecondary{
+   
+  color:#10fbd0;
+  font-size: 18px;
+ 
+ }
+
+ .header{
+   display:flex;
+   flex-direction: column;
+  margin-left:450px ;
+  
+  margin-top:20px;
+ align-items: flex-start;
+ font-size:25px;
+  color:white;
+  margin-bottom:20px;
+}
+
+.Nav_Bar{
+ position: fixed;
+  display:flex;
+  z-index: 1;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+  width:93vw;
+  height:6vh;
+  color: #444645;
+ background-color: #00000063;
+  padding: 10px 55px;
+  backdrop-filter: blur(4.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(255, 255, 255, 0);
+   
+  
+}
+
+a{
+ 
+  text-decoration: none;
+  margin:10px;
+  cursor: pointer;
+  
+}
+
+.Nav_Socials>i{
+  margin:5px;
+  color:rgba(44,224,12,1);
+  font-size: 20px;
+  border-radius: 10px;
+  background-color:rgba(14, 12, 12, 0.842);
+  padding:10px;
+  border:8px rgb(251, 251, 251);
+  cursor: pointer;
+  
+}
+
+.labelPrimary{
+  color:whitesmoke;
+  font-size: 16px;
+  font-weight: 1500px;
+  margin-top:10px;
+}
+
+
+
+.Account_Recent_Transactions{
+  padding:10px;
+  width:330px;
+
+  max-height:186vh;
+  overflow-y: scroll;
+}
+
+
+
+.header-NFTS{
+  
+  
+  
+}
+
+
+
+
+.Account_Empty_Transactions{
+
+  width:330px;
+  max-height:272vh;
+  overflow: hidden;
+}
+
+
+.Account_Earliest_Stats{
+  height:auto;
+  margin-left:-1300px;
+  margin-top: 1700px;
+  width:65vw;
+  
+}
+
+
+
+
+.Earliest_Stats_grid{
+ width: 240px;
+  margin-left:300px;
+  margin-top:100px;
+  padding: 20px;
+}
+
+.Latest_Stats_grid{
+  width: 240px;
+
+  margin-left:200px;
+  padding: 20px;
+}
+
+.Account_Latest_Column1{
+  
+  display:flex;
+  flex-direction: row;
+  margin-left:-100px;
+  align-items: flex-start;
+  height:600px;
+  margin-bottom:40px;
+
+}
+
+
+.Account_Latest_Column2{
+  border-top: #9cbeb87e solid 1px;
+  display:flex;
+  flex-direction: row;
+  margin-left:0px;
+  align-items: flex-start;
+  height:900px;
+  margin-top:330px;
+
+}
+
+
+.Account_Latest_Buys{
+  
+  overflow-y: scroll;
+  max-height:600px;
+  margin-top: 100px;
+  margin-left: 25px;
+  padding:10px;
+
+}
+
+
+.Account_Latest_Sales{
+  overflow-y: scroll;
+  max-height:600px;
+  margin-top: 100px;
+  margin-left: 25px;
+  padding:10px;
+}
+
+
+
+
+
+.Sells-header{
+  margin-top: 100px;
+  margin-bottom: 0px;
+  margin-left: 320px;
+}
+
+
+
+.Buys-header{
+  
+  margin-top: 100px;
+  margin-bottom: 0px;
+  margin-left: 320px;
+}
+
+.Account_Latest_In{
+  
+  overflow-y: scroll;
+  max-height:600px;
+  margin-top: 100px;
+  margin-left: -25px;
+  padding:10px;
+ }
+ 
+
+ .Account_Latest_Out{
+
+  overflow-y: scroll;
+  max-height:600px;
+  margin-top: 100px;
+  margin-left: -25px;
+  padding:10px;
+
+ }
+
+
+ .Account_Address{
+   font-style: bold;
+  height:480px;
+  width:560px;
+  font-size: 15px;
+  margin-right: 20px;
+  margin-bottom:-250px;
+  background: rgb(9, 214, 105);
+ 
+} 
+
+
+.wallet_stats_wrapper>.label,.ethBalance>.label{
+  font-size: 30px;
+  color:rgb(54, 52, 52);
+}
+.wallet_stats_wrapper>p{
+  border:1px solid rgba(54, 52, 52, 0.123);
+  font-size: 20px;
+  font-style: bold;
+}
+
+
+.ethBalance{
+  font-size: 30px;
+  color:rgb(240, 232, 232);
+font-style: bold;
+
+}
+
+.ethBalance>h3{
+  margin-top:60px;
+}
+
+.ethBalance>h4{
+margin-top: -10px;
+  font-family: 'Orbitron', sans-serif;
+}
+.wallet_stats_wrapper{
+  padding:35px;
+}
+
+
+
+
+.NFTS-container{ 
+  margin-left:1350px;
+  margin-top:-4630px;
+  width:354px;
+  max-height:196vh;
+  padding-top: 0px;
+ 
+  
+}
+
+
+
+.titles{
+  margin-top:-20px;
+  background-color: white !important;
+  color:rgb(54, 52, 52);
+ padding:10px;
+}
+
+
+.fa-location-arrow{
+  color:#11d8b7;
+  font-size: 30px;
+  background-color: rgba(20, 19, 19, 0.452);
+  border-radius: 100%;
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(71, 60, 60, 0.801);
+}
+
+
+.Account_stats{
+  margin-top:60px;
+  width:680px;
+
+}
+
+.nft_picks{
+  margin-top:60px;
+  margin-left: -600px;
+  width:570px;
+  border-radius: 10px;
+}
+
+.titles{
+ border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-left: 200px;
+  max-height: 100px;
+ 
+}
+.nft_snipes{
+  display:flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+
+}
+
+.nft_picks_inner{
+  padding:15px;
+}
+
+.Account_stats_inner{
+  padding:15px;
+}
+p>img{
+  width:40%;
+  height:20%;
+ padding:20px;
+ margin-left: 70px;
+}
+
+.table{
+  min-width: 990px;
+  margin-top:-440px;
+  height:300px;
+  margin-left: 460px;
+  border-collapse:collapse;
+ 
+}
+
+
+
+.login_Link{
+  overflow: visible;
+  color:#161817;
+  height:fit-content;
+
+}
+
+.loginBox>h1{
+  color:#2f3130;
+}
+
+.collection_table{
+  position:relative;
+  margin-top: 40px;
+  margin-left: 50px;
+  font-size:15px;
+  width:90vw;
+  
+  height:auto;
+
+ 
+}
+
+.collection_table>thead {
+  font-size:15px;
+  margin:10px;
+
+}
+
+
+.collection-item{
+  margin-left: 100px;
+ margin: 20px;
+ width:80vw;
+}
+.collection-data{
+  margin-right: 110px;
+width: 200px;
+
+}
+
+.collection-name{
+margin-left:20px;
+border: 1px solid #11d8b7;
+border-radius: 8px;
+padding: 7px;
+
+}
+
+.fa-external-link-alt{
+  color: #696d6c;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.fa-external-link-alt:hover{
+cursor:pointer;
+}
+
+.collections-header{
+  margin-top: 140px;
+  margin-left: 800px;
+  margin-bottom: 50px;
+}
+
+
+.Nav_Logo{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+ 
+}
+
+.Nav_Logo>h2{
+margin-left: 10px;
+font-weight: bold;
+font-family: 'Orbitron', sans-serif;
+
+background: -webkit-linear-gradient(rgba(44,224,12,1), #bbb8b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.Nav_Links>a{
+  text-decoration: none;
+  color:#b3aaaa;
+  font-size: 18px;
+  font-weight: bold;
+  margin:0px 25px 0px 25px;
+}
+
+.Nav_Links>a:hover{
+  color:white;
+  border-bottom: 1px solid rgba(44,224,12,1);
+}
+
+.login-button{
+  margin-right:30px;
+  background: linear-gradient(59deg, rgba(7,233,136,1) 11%, rgba(44,224,12,1) 100%);
+  border-radius: 5px;
+  color:white;
+  font-size: 20px;
+  padding:10px;
+  border:none;
+  cursor: pointer;
+}
+
+.login-button>a{
+  text-decoration: none;
+  color:white;
+  font-weight: bold;
+}
+
+.ethBalance>.fab{
+  color:rgb(109, 121, 136);
+  margin-left: 5px;
+}
+
+
+.upcoming-cards-secondary{
+  margin:10px 10px 0px 10px;
+  width:300px;
+  height:270px;
+  background:rgb(255, 255, 255);
+  border-radius: 18px; 
+  padding:10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.upcoming-cards-secondary>img{
+  margin:40px 15px 0px 15px;
+  width:250px;
+  height:170px;
+  border-radius: 18px; 
+}
+
+
+.upcoming-cards-main>img{
+  margin-top: 20px;
+  margin-left: -20px;
+  width:530px;
+  height:560px;
+  border-radius: 18px; 
+  padding:10px;
+}
+
+.upcoming-cards-main{
+  margin-top: -15px;
+  margin-left: -20px;
+  width:560px;
+  color:#444645;
+  height:600px;
+  background:rgb(255, 255, 255);
+  border-radius: 18px; 
+  padding:10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+}
+
+.upcoming-cards-name,.upcoming-cards-date{
+font-size: 20px;
+font-weight: bold;
+height:100px;
+}
+
+.upcoming-cards-secondary-name,.upcoming-cards-secondary-date{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(61, 60, 60);
+  }
+
+.upcoming-cards-container{
+  margin-top: -20px;
+  margin-left: -20px;
+  width:1200px;
+  height:auto;
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+
+.upcoming-cards{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+
+}
+
+.upcoming-container{
+  margin-top:150px;
+}
+
+.upcoming-header{
+  display:flex;
+  flex-direction:row;
+  margin-left:700px;
+  margin-top:30px;
+  margin-bottom:80px;
+  font-size:20px;
+  font-weight: bold;
+  color:rgb(243, 182, 69);
+}
+
+.upcoming-header>img{
+margin-left: 10px;
+height:80px;
+}
+
+.upcoming-cards-gamefi{
+  display:flex;
+  flex-direction:column;
+}
+
+.upcoming-cards-gamefi-main{
+  width:1500px;
+  height:600px;
+  margin-left:150px;
+  margin-top:100px;
+  border-radius: 20px;;
+  background-color:rgb(255, 255, 255);
+}
+
+.upcoming-cards-gamefi-main>img{
+  margin-top: 20px;
+  margin-left: -20px;
+  width:530px;
+  height:560px;
+  border-radius: 18px; 
+  padding:10px;
+}
+
+.upcoming-cards-gamefi-secondary{
+  width:300px;
+  background-color:rgb(255, 255, 255);
+  height:300px;
+  margin:20px;
+  border-radius: 20px;
+}
+
+.upcoming-cards-gamefi-secondary>img{
+  margin:40px 15px 0px 15px;
+  width:250px;
+  height:170px;
+  border-radius: 18px; 
+}
+.upcoming-cards-gamefi-secondary-container{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.upcoming-header-gamefi{
+  display:flex;
+  flex-direction:row;
+  margin-left:800px;
+  margin-top:90px;
+  margin-bottom:-30px;
+  font-size:20px;
+  font-weight: bold;
+}
+.upcoming-header-art{
+  margin-left:800px;
+  margin-top:90px;
+  margin-bottom:90px;
+  font-size:20px;
+  font-weight: bold;
+}
+.upcoming-cards-gamefi-date,.upcoming-cards-gamefi-name,.upcoming-cards-gamefi-secondary-date,.upcoming-cards-gamefi-secondary-name{
+  font-size: 20px;
+  font-weight: bold;
+  height:100px;
+  color: rgb(46, 44, 44);
+}
+
+.wrap{
+  margin-top:-600px;
+  margin-left:740px;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.timer{
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  margin-left: 3rem;
+  gap: 30px;
+  color:red;
+  margin-top: -5px;
+
+}
+
+.days{
+  background-color: blanchedalmond;
+  padding: 11px;
+  font-size: 22px;
+}
+
+
+.hours{
+  background-color: blanchedalmond;
+  padding: 11px;
+  font-size: 22px;
+}
+.mins{
+  background-color: blanchedalmond;
+  padding: 11px;
+  font-size: 22px;
+}
+
+.secs{
+  background-color: blanchedalmond;
+  padding: 11px;
+  font-size: 22px;
+}
+
+
+
+.offer{
+  flex-basis: 12rem;
+  color:#232524;
+  font-weight: bold;
+}
+
+
+.text-description-gamefi{
+  margin-left:800px;
+  width:500px;
+  margin-top:80px;
+  font-size:20px;
+  font-weight: bold;
+  color:rgba(70, 67, 67, 0.883);
+}
+
+.communities{
+  display:flex;
+  margin-top:50px;
+  margin-bottom:150px;
+  width:1200px;
+  flex-direction: row;
+  margin-left:250px;
+  flex-wrap: wrap;
+  justify-content:center;
+
+}
+
+.communities-cards{
+  margin-left:20px;
+  margin-right:20px;
+  margin-top:30px;
+  width:150px;
+  height:150px;
+  backdrop-filter: blur(2.7px);
+  background-color: #fbe310;
+  background:luminosity(0.5);
+  border-radius: 50px;
+ 
+}
+.communities-cards>p{
+  margin-top:50px;
+}
+
+.communities-cards>img{
+  margin-top: 20px;
+ 
+  width:120px;
+  height:100px;
+  border-radius: 18px; 
+  padding:10px;
+}
+.communities-header{
+  margin-left:700px;
+  margin-top:100px;
+ 
+  font-size:20px;
+  font-weight: bold;
+ 
+}
+
+
+.login_Link>p>a{
+  color:red;
+
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }

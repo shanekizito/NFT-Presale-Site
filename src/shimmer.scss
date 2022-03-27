@@ -125,4 +125,44 @@
   max-height:196vh;
   margin-bottom: 100px;
 
+<<<<<<< HEAD
 }
+=======
+}
+
+.searchInput{
+    height:48px;
+    width: fit-content;
+    border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+   border:  2px solid #10fbd0;
+   border-right: 1px solid #10fbd0; 
+  }
+
+
+
+
+
+  .csv-input{
+    background-color: #090a0a;
+    color: #eeeeee;
+    padding: 16px 15px 30px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-style: italic;
+    max-width: 200px;
+    font-weight: 400;
+    border-style: solid;
+    border-width: 1px;
+    border-image: radial-gradient(rgb(204, 204, 204), #0adfdf) 1;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
+
+
+
+
+
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
