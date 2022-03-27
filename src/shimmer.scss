@@ -1,0 +1,128 @@
+
+
+.card,.card-earliest,.card-recent,.card-sixty,.card-nfts{
+    position: relative;
+    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.808);
+    border-radius: 6px;
+    
+    overflow: hidden;
+    
+    margin: 40px auto;
+    backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+   border: 1px solid rgba(255, 255, 255, 0.096);
+   height:495px;
+  width:520px;
+  margin-left: 100px;
+  margin-bottom:-250px;
+   
+  .shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: rgb(160, 158, 158);
+    background: linear-gradient(to right, #ececec 8%, #e0e0e0d5 18%, #ffffff 33%);
+    background-size: 1200px 100%;
+}
+
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+  
+    .media {
+    background-color:rgb(90, 90, 90);
+    height: 80px;
+    margin-top: -20px;
+}
+
+.media>h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 130px;
+    padding-top: 20px;
+   color:rgba(0, 0, 0, 0.589);
+}
+
+.p-32 {
+    padding: 32px;
+}
+
+.title-line {
+    height: 24px;
+    width: 100%;
+    margin-bottom: 12px;
+   
+}
+
+.content-line {
+    height: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+     
+}
+  
+  .end {
+      width: 40%;
+    }
+
+}
+
+
+.m-t-24 {
+    margin-top: 24px;
+}
+
+.card-earliest{
+  height:400px;
+  margin-left:100px;
+  margin-top: 290px;
+  width:65vw;
+
+}
+
+.card-recent{
+
+  height:400px;
+  margin-left:100px;
+  margin-top: 290px;
+  width:65vw;
+
+
+}
+
+.card-sixty{
+   margin-left:650px;
+   margin-top:-500px;
+    width:35vw;
+    height:500px;
+
+
+}
+
+.card-nfts{
+  height:500px;
+  margin-left:1390px;
+  margin-top:-1390px;
+  width:330px;
+  max-height:196vh;
+  margin-bottom: 100px;
+
+}

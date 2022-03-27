@@ -1,28 +1,36 @@
 import React from 'react'
 import {Link , BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './Navigation.css';
+import ms from '../Assets/ms.png'
+
 const Navigation = () => {
     return (
-       
-       <div className="Nav_Bar container">
-       <h4 className="Nav_Logo">NFT.</h4>
+   
+     
+       <div className="Nav_Bar">  
        <div className="Nav_Links">
-       <Link className="Nav_Pages"  to='/'>Home</Link>
-       <Link to='/'>Dashboard</Link>
-       <Link to='https://github.com/shanekizito'>Faq</Link>
+       
+       <Link className="Nav_Pages"  to='/home'><img className="Nav_Logo" src={ms} alt=""/></Link>
+       <Link className="Nav_Pages"  to='/home'>|</Link>
+       <Link className="Nav_Pages"  to='/'>Office</Link>
+       <Link className="Nav_Pages" to='/'>Products</Link>
+       <Link className="Nav_Pages"to='/'>Resources </Link>
+       <Link className="Nav_Pages"to='/'>Templates</Link>
+       <Link className="Nav_Pages"to='/'>Support</Link>
+       <Link className="Nav_Pages"  to='/'>My account</Link>
+       <Link className="Nav_Pages"  to='/'>
+       <button className="Nav_buy_now">Buy now</button>
+       </Link>
+       <Link className="Nav_Pages right"  to='/'>All Microsoft</Link>
+       <Link className="Nav_Pages "  to='/'>Sign in</Link>
+       <Link className="Nav_Pages user-logo"  to='/'> <i class="fas fa-user"></i></Link>     
        </div>
 
-         
-      <div className="Nav_Socials">
-      <i class="fab fa-discord"></i>
-      <i class="fab fa-telegram"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-instagram"></i>
       
-      </div>
      
      </div>
-        
+     
+     
     )
 }
 

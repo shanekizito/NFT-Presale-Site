@@ -1,5 +1,5 @@
 html{
-    font-family: 'Roboto', sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
@@ -10,48 +10,80 @@ html{
 td{
     padding: 10px;
     border-bottom: 1px solid #10fbd0;
-    
 }
 
+thead{
+    background-color: #ffffff;
+    color: rgb(78, 77, 77);
+    font-size: 20px;
+}
 
 #csv-form{
-    margin-top: 120px;
-    margin-left: 550px;
+    display:flex;
+    height:350px;
+    padding: 50px;
+    width:330px;
+    flex-direction: column;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    margin-left: 185px;
+    background: rgba(0, 0, 0, 0.849);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.671);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(255, 255, 255, 0.096);
 
 }
 
-table{
+
+
+.table{
     min-width: 900px;
+    margin-top:-440px;
+    height:300px;
+    margin-left: 460px;
 }
 
 .csv-button,.upload-button{
     background-color: #090a0a;
     color: #eeeeee;
-    border:  2px solid #10fbd0;
+    border:  1px solid #41424280;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 400;
+    height: 46px;
     line-height: 1.5;
     cursor: pointer;
     margin-left: 10px;
+    
 
+}
+
+.csv-button{
+
+    width:240px;
+    margin-top: -10px;
+    margin-bottom:100px;
 }
 
 .csv-input{
     background-color: #090a0a;
     color: #eeeeee;
-    border:  2px solid #10fbd0;
-    padding: 10px;
+    padding: 16px 15px 30px 15px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
+    font-style: italic;
+    max-width: 200px;
     font-weight: 400;
-    line-height: 1.5;
+    border:  1px solid #10fbd0;
     cursor: pointer;
     margin-left: 10px;
 
 
 }
+
 
 #csv-form>h2{
 
@@ -61,5 +93,13 @@ table{
 
 
 .upload-button{
-    margin:20px;
+    margin-top:0px;
+    width:240px;
 }
+
+
+.address_upload:hover{
+    cursor: pointer;
+    color: #10fbd0;   
+}
+

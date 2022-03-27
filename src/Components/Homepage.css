@@ -14,9 +14,11 @@
 .Hero-Texts{
     max-width: 500px;
     color:white;
+    
 }
 .Hero-Texts>h2{
   margin-top:9rem;
+  overflow-y: hidden;
 }
 
 
@@ -43,6 +45,7 @@
 
 .Hero-Texts>h3{
     margin-top:2rem;
+    overflow:hidden;
 }
 
 .Hero-Texts{
