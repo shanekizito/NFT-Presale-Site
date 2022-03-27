@@ -1,385 +1,48 @@
+*{overflow-x:hidden;
+
+}
+
+
 body{
-  background-color:rgb(7, 0, 20);
-  line-height:2.5rem;
-  letter-spacing: 3px;
-  
+  background-image:url('../src/images/BG-IMAGE.svg');
+  font-family: "Segoe UI Webfont", -apple-system, "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    padding-bottom: 0.227px;
+    padding-top: 0.227px;
+    color: #000;
 }
 
-p{
-  font-size:10px;
-}
-.Screen_container{
-  margin-left: 150px;
-  margin-top: -20px;
-}
-
-
-
-
-.searchInput {
-  border:none;
-  background-color: aliceblue;
-  outline:none;
-  color: rgb(53, 53, 53);
-  font-size: 16px;
+.title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
+  font-size: 24px;
+  line-height: 28px;
   font-weight: 300;
-  transition: 0.4s;
-   
-  margin-top:-5px;
-  width: 260px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+  line-height: 1.75rem;
+  padding-bottom: 2.3632px;
+  padding-top: 2.3632px;
+  color: #1b1b1b;
+  font-size: 1.5rem;
+  font-weight: 600;
 
-}
-
-.label{
-   
-  color:rgb(139, 136, 136);
-  
-}
-
-p{
-  font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  border-radius: 16px;
-  margin:5px 0 0 0;
-  padding:6px;
-  
-}
-
-
-
-.container{
-  border-radius: 10px;
-  margin-left:20px;
-  width:fit-content;
-  color:white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding:20px;
-  font-size: 22px;
-  background-color: rgb(34, 32, 32);
-  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
-  border:1px silver;
-  
-  
-  margin-top:30px;
-  background: rgba(0, 0, 0, 0.849);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.671);
-  backdrop-filter: blur(2.7px);
-  -webkit-backdrop-filter: blur(2.7px);
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  
-}
-
-
-.Screen_container_inner{
-  display:flex;
-  flex-direction: column;
-}
-
-.searchButton,.refreshButton{
-  height:55px;
-  width:65px;
- font-size:17px;
- border-top-right-radius: 10px;
- border-bottom-right-radius: 10px;
- color:#10fbd0;
-  background-color:black;
- 
-  border:  2px solid #10fbd0;
-  border-left: 1px solid #10fbd0;
-}
-
-.refreshButton{
-  position:fixed;
-  margin-top:150px;
-  margin-left: -170px;
-  padding: 20px;
-  width:130px;
-  border-radius: 25px;
-}
-.searchButton:hover{
-  cursor: pointer;
-  
-
-}
-
-.refreshButton:hover {
-  cursor: pointer;
-  transform:scale(1.07);
-
-  
-}
-.searchInput{
-  height:48px;
-  width: fit-content;
-  border-top-left-radius: 10px;
- border-bottom-left-radius: 10px;
- border:  2px solid #10fbd0;
- border-right: 1px solid #10fbd0; 
-
-}
-.Account_Address{
-  height:685px;
-  width:520px;
-  font-size: 15px;
-  font-style: italic;
-  margin-right: 0px;
- 
-   
- 
-} 
-
-.Account_Address>p{
-  font-weight: 1000px;
-  font-size: 17px;
-}
-.Account_Address>p,.Account_Address>h4{
-  width:fit-content;
-  border-radius: 20px;
-  padding:12px;
-   
-  border-style: solid;
-border-color: #35bda4;
-}
-
-
-.Row_one{
-  display:flex;
-  flex-direction: row;
-  align-items: flex-start;
-   margin-left: 50px;
-}
-
-.Row_zero{
-  display:flex;
-  flex-direction: row;
-  align-items: flex-start;
-
-}
-
-.Account_Latest_Stats,.Account_Earliest_Stats{
-  display:flex;
-  flex-direction: row;
-  
-   
-  width: 65vw;
-  height:auto;
-}
-
-.Account_Latest_Stats{
-  margin-left:-20px;
-}
-
-.Earliest_Stats_Column2{
-  margin-left:230px;
-}
-
-.Earliest_Stats_Column1{
-  margin-left:-480px;
-  
-}
-
-
-.Account_Latest_Column2{
-  margin-left:200px;
-}
-
-
-
-.Account_Latest_Column1,  .Account_Latest_Column2,.Earliest_Stats_Column1,.Earliest_Stats_Column2{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width:fit-content;
-  height:fit-content;
- 
-  margin-top:60px;
-}
-
-.Account_Balance{
-  width:400px;
-  height:205px;
-}
-
-.Account_SixtyDay_Averages{
-  width:35vw;
-  height:690px;
-}
-
-
-p{
-  overflow: hidden;
-}
-
-
-html,body{
-  font-family: 'Times New Roman', Times, serif;
-  background-image: url('./images/background.jpg');
-  box-sizing: border-box;
-}
-
-.labelecondary{
-   
-  color:#10fbd0;
-  font-size: 18px;
- 
- }
-
- .header{
-   display:flex;
-   flex-direction: column;
-  margin-left:450px ;
-  
-  margin-top:20px;
- align-items: flex-start;
- font-size:25px;
-  color:white;
-  margin-bottom:20px;
-}
-
-.Nav_Bar{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width:83vw;
-  height:10vh;
-  padding: 10px 55px;
+  font-family: "Segoe UI", "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
 }
 
 a{
-  color: white;
-  text-decoration: none;
-  margin:10px;
-  cursor: pointer;
+  color:blue;
   
 }
 
-.fab{
-  margin:5px;
-  color:#ffffff;
-  font-size: 20px;
-  border-radius: 10px;
-  background-color: #10fbd0;
-  padding:10px;
-  box-shadow: 0 0 10px rgba(rgb(243, 243, 243), 0, 0, 0.);
-  border:8px silver;
-  cursor: pointer;
-  
+form>p{
+  margin-top:1rem;
 }
 
-.labelPrimary{
-  color:white;
-  font-size: 16px;
-  font-weight: 1500px;
-  
-  margin-top:10px;
+input{
+  font-size:1rem;
 }
-
-.Account_Recent_Transactions{
-  position: absolute;
-  margin-left:1350px;
-  margin-top:-3735px;
-  width:330px;
-  max-height:186vh;
-  overflow-y: scroll;
-   
-}
-
-.Account_Empty_Transactions{
-  position: absolute;
-  margin-left:1350px;
-  margin-top:-3730px;
-  width:330px;
-  max-height:272vh;
-  overflow: hidden;
-
-}
-
-
-.Account_Earliest_Stats{
-  
-  height:auto;
-   
-  margin-left:-1300px;
-  margin-top: 800px;
-  width:65vw;
-}
-
-.Earliest_Stats_grid{
-  min-width: 300px;
-  min-height: 300px;
-  padding: 20px;
-}
-
-.Latest_Stats_grid{
-  min-width: 300px;
-  min-height: 100px;
-  padding: 20px;
-}
-
-.Account_Latest_Column1{
-  
-  margin-left:-410px;
-  
-   
-  
-
- 
-}
-
-.Account_Latest_Buys{
-  overflow-y: scroll;
-  max-height:600px;
-  padding:10px;
-}
-
-.Account_Latest_Sales{
-  overflow-y: scroll;
-  max-height:600px;
-  margin-top: 100px;
-  margin-left: 25px;
-  padding:10px;
-}
-
-
-
-body::-webkit-scrollbar-thumb {
-  width: 12px;     
-  background-color: blue;           
-}
-
-.Sells-header{
-  margin-top: 100px;
-  margin-bottom: 90px;
-  margin-left: 120px;
-}
-
-
-
-.Buys-header{
-  
- margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: 120px;
-}
-
-.Account_Latest_In{
-  
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-left: -25px;
- }
- 
-
- .Account_Latest_Out{
-
-  max-height: 600px;
-  overflow-y: scroll;
-  margin-left: -35px;
-  margin-top: 105px;
-  padding:10px;
-
- }

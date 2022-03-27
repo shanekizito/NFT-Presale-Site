@@ -1,0 +1,50 @@
+.hero-section{
+    display:flex;
+    flex-direction: row;
+    
+    background-image:url('../Assets/heroblack.jpg') ;
+    background-size: 99vw; 
+     width:98vw;
+     height:60vh;
+     background-repeat:no-repeat;
+     padding-left:4rem;
+    
+    
+}
+.Hero-Texts{
+    max-width: 500px;
+    color:white;
+}
+.Hero-Texts>h2{
+  margin-top:9rem;
+}
+
+
+.btn-sign-in{
+  background-color: orangered;
+    color:white;
+    border:1px solid #fff;
+    margin-top:2rem;
+    width: 35%;
+    height: 2rem;
+    cursor:pointer;
+}
+
+.btn-get-office{
+    background-color: rgb(255, 255, 255);
+      color:orangered;
+      border:1px solid orangered;
+      margin-left:2rem;
+      margin-top:2rem;
+      width: 35%;
+      height: 2rem;
+      cursor:pointer;
+  }
+
+.Hero-Texts>h3{
+    margin-top:2rem;
+}
+
+.Hero-Texts{
+  
+}
