@@ -7,14 +7,25 @@ html{
     
 }
 
+<<<<<<< HEAD
+td{
+    padding: 10px;
+    border-bottom: 1px solid #10fbd0;
+=======
 
 
 thead {
     background-color: #ffffff;
     color: rgb(78, 77, 77);
     font-size: 20px;
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }
 
+thead{
+    background-color: #ffffff;
+    color: rgb(78, 77, 77);
+    font-size: 20px;
+}
 
 
 #csv-form{
@@ -37,6 +48,15 @@ thead {
 
 
 
+<<<<<<< HEAD
+.table{
+    min-width: 900px;
+    margin-top:-440px;
+    height:300px;
+    margin-left: 460px;
+}
+=======
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 
 .csv-button,.upload-button{
     background-color: #090a0a;
@@ -55,12 +75,39 @@ thead {
 }
 
 .csv-button{
+<<<<<<< HEAD
 
     width:240px;
     margin-top: -10px;
     margin-bottom:100px;
 }
 
+.csv-input{
+    background-color: #090a0a;
+    color: #eeeeee;
+    padding: 16px 15px 30px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-style: italic;
+    max-width: 200px;
+    font-weight: 400;
+    border:  1px solid #10fbd0;
+    cursor: pointer;
+    margin-left: 10px;
+
+=======
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
+
+    width:240px;
+    margin-top: -10px;
+    margin-bottom:100px;
+}
+
+<<<<<<< HEAD
+
+#csv-form>h2{
+=======
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 
 
 #csv-form>h2{
@@ -76,12 +123,17 @@ thead {
 }
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 .address_upload:hover{
     cursor: pointer;
     color: #10fbd0;   
 }
 
+<<<<<<< HEAD
+=======
 
 .address-row{
     background-color: rgba(0, 0, 0, 0.698) !important;
@@ -117,3 +169,4 @@ thead {
   }
   
  
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d

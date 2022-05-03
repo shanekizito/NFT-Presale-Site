@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e50e5740.chunk.css",
+    "main.js": "/static/js/main.665a0501.chunk.js",
+    "main.js.map": "/static/js/main.665a0501.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
+    "static/js/2.7b7102fd.chunk.js": "/static/js/2.7b7102fd.chunk.js",
+    "static/js/2.7b7102fd.chunk.js.map": "/static/js/2.7b7102fd.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.e50e5740.chunk.css.map": "/static/css/main.e50e5740.chunk.css.map",
+    "static/js/2.7b7102fd.chunk.js.LICENSE.txt": "/static/js/2.7b7102fd.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/BG-IMAGE.11d9e3bc.svg",
+    "static/media/Homepage.css": "/static/media/heroblack.8e5d3919.jpg",
+    "static/media/key.3e3f6b73.svg": "/static/media/key.3e3f6b73.svg",
+    "static/media/mslogo.564db913.svg": "/static/media/mslogo.564db913.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.776c1e0d.js",
+    "static/js/2.7b7102fd.chunk.js",
+    "static/css/main.e50e5740.chunk.css",
+    "static/js/main.665a0501.chunk.js"
+  ]
+}

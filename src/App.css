@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+*{
+  overflow-x:hidden;
+
+=======
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Orbitron:wght@400;900&family=Permanent+Marker&display=swap');
@@ -15,18 +20,57 @@ p{
 .Screen_container{
   margin-left: 150px;
   margin-top: -20px;
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }
 
 
+body{
+   background-image:url('../src/images/BG-IMAGE.svg');
+   font-family: "Segoe UI Webfont", -apple-system, "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+    font-size: 15px;
+    background-repeat: no-repeat;
+    background-size:100 100;
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    padding-bottom: 0.227px;
+    padding-top: 0.227px;
+    color: #000;
+    height:auto;
+}
 
-
-.searchInput {
-  border:none;
-  background-color: aliceblue;
-  outline:none;
-  color: rgb(53, 53, 53);
-  font-size: 16px;
+.title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
+  font-size: 24px;
+  line-height: 28px;
   font-weight: 300;
+<<<<<<< HEAD
+  line-height: 1.75rem;
+  padding-bottom: 2.3632px;
+  padding-top: 2.3632px;
+  color: #1b1b1b;
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  font-family: "Segoe UI", "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+}
+
+a{
+  color:blue;
+  
+}
+
+form>p{
+  margin-top:1rem;
+}
+
+input{
+  font-size:1rem;
+=======
   transition: 0.4s;
    
   margin-top:-5px;
@@ -942,4 +986,5 @@ height:80px;
 .login_Link>p>a{
   color:red;
 
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }

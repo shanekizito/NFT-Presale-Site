@@ -22,9 +22,13 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "sass": "^1.45.0",
+<<<<<<< HEAD
+    "web-vitals": "^1.1.2"
+=======
     "validator": "^13.7.0",
     "web-vitals": "^1.1.2",
     "zxcvbn": "^4.4.2"
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
   },
   "scripts": {
     "start": "react-scripts start",

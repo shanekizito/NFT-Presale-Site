@@ -1,0 +1,38 @@
+.follow{
+    color:black;
+    display:flex;
+    flex-direction:column;
+}
+
+.follow>i{
+    margin-left:1rem;
+    font-size:2rem;
+}
+.follow-header{
+    display:flex;
+    flex-direction:row;
+     margin-left:3rem;
+    align-items:center;
+    margin-bottom:1rem;
+}
+
+.follow-header>i{
+    margin-left:1rem;
+font-size:1.5rem;
+}
+
+.list{
+    display:flex;
+    flex-direction:row;
+    margin-left:1rem;
+    margin-top:1rem;
+}
+
+li{
+    margin-top:1rem;
+}
+
+.list>ul{
+margin-left:2rem;
+color:grey;
+}

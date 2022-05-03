@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import React from 'react';
 import { useState } from 'react';
 import '../App.css';
@@ -318,3 +320,4 @@ props.immediateSales.map((item,i)=>{
 
 
   export default Home;
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d

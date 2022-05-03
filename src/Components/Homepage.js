@@ -1,4 +1,34 @@
 import React from 'react'
+<<<<<<< HEAD
+import heroblack from '../Assets/heroblack.jpg'
+import './Homepage.css';
+import { useNavigate } from 'react-router-dom';
+import Follow from './Follow';
+
+const Homepage = (props) => {
+ const navigate = useNavigate();
+
+  return (
+
+    <div>
+        <div className="hero-section">
+        <div className="Hero-Texts">
+            <h2>Welcome to Office</h2>
+            <h3>Your place to create, communicate, collaborate, and get great work done.</h3>
+            <button className="btn-sign-in" onClick={()=>{
+                navigate('/');
+            }}>Sign in</button>
+            <button className="btn-get-office">Get Office</button>
+            <h3>Sign up for the free version of Office</h3>
+        </div>
+        </div>
+        <Follow/>  
+    </div>
+  )
+}
+
+export default Homepage
+=======
 import './Homepage.css';
 import arabica from '../images/arabica.png';
 import kitekat  from '../images/kitekat.png';
@@ -193,3 +223,4 @@ const Homepage = () => {
 }
 
 export default Homepage
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d

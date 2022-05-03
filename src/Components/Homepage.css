@@ -1,3 +1,57 @@
+<<<<<<< HEAD
+.hero-section{
+    display:flex;
+    flex-direction: row;
+    
+    background-image:url('../Assets/heroblack.jpg') ;
+    background-size: 99vw; 
+     width:98vw;
+     height:60vh;
+     background-repeat:no-repeat;
+     padding-left:4rem;
+    
+    
+}
+.Hero-Texts{
+    max-width: 500px;
+    color:white;
+    
+}
+.Hero-Texts>h2{
+  margin-top:9rem;
+  overflow-y: hidden;
+}
+
+
+.btn-sign-in{
+  background-color: orangered;
+    color:white;
+    border:1px solid #fff;
+    margin-top:2rem;
+    width: 35%;
+    height: 2rem;
+    cursor:pointer;
+}
+
+.btn-get-office{
+    background-color: rgb(255, 255, 255);
+      color:orangered;
+      border:1px solid orangered;
+      margin-left:2rem;
+      margin-top:2rem;
+      width: 35%;
+      height: 2rem;
+      cursor:pointer;
+  }
+
+.Hero-Texts>h3{
+    margin-top:2rem;
+    overflow:hidden;
+}
+
+.Hero-Texts{
+  
+=======
 body{
   font-family: 'Roboto', sans-serif;
     letter-spacing:3.5px;
@@ -633,4 +687,5 @@ justify-content:flex-start;
 .Account_Address-home>.titles{
     padding-left:80px;
    
+>>>>>>> 15f129ef73fd751b1d934993ce5ebe894c11839d
 }
