@@ -291,7 +291,7 @@ props.immediateSales.map((item,i)=>{
 
       <h3 className="header-NFTS titles">NFT's in Wallet</h3>
 
-  <div className={props.NFTS.length>2?"Account_Recent_Transactions  ":"Account_Empty_Transactions "}> 
+    <div className={props.NFTS.length>2?"Account_Recent_Transactions  ":"Account_Empty_Transactions "}> 
   
        {props.NFTS.length>2?props.NFTS.map((nft,i) => {
           return (

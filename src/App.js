@@ -3,15 +3,16 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './Components/login';
 import Navigation from './Components/Navigation';
 import Launchpad from './Components/Launchpad';
-
+import SignUpContainer from './Components/SignUpContainer';
+import axios from "axios";
 import Collections from './Components/Collections';
 import Home from './Components/Home'
 import './shimmer.scss';
 import { useState } from 'react'
-import '../src/Components/Dashboard.css'
+import './Components/Dashboard.css'
 import HomeLoading from './Components/HomeLoading';
 import Homepage from './Components/Homepage';
-import axios from 'axios';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -32,18 +33,18 @@ const App = () => {
 
   const [NFTS, setNFTS] = useState([]);
   
- const [testArray, seTestArrayy] = useState([]);
+  const [testArray, seTestArrayy] = useState([]);
 
 
-  const[transfer,setTransfer]=useState(0);
+  const [transfer,setTransfer]=useState(0);
 
- const [received,setReceived]=useState('');
+  const [received,setReceived]=useState('');
 
- const [latestTransferred,setLatestTransferred]=useState(0);
+  const [latestTransferred,setLatestTransferred]=useState(0);
 
- const [latestReceived,setLatestReceived]=useState('');
+  const [latestReceived,setLatestReceived]=useState('');
 
- const [sixtyDayTo,setSixtyDayTo]=useState(0);
+  const [sixtyDayTo,setSixtyDayTo]=useState(0);
 
   const [sixtyDayFrom,setSixtyDayFrom]=useState(0);
 
@@ -93,7 +94,7 @@ function loadTable(){
   if(window.location.pathname==("/"+ID)){
     var id=ID;
     
-    axios.get("https://statsnft.herokuapp.com/wallet/get/"+id).then(response => {
+    axios.get("http://localhost:5000/wallet/get/"+id).then(response => {
     
     if(response.data){
       setCsvArray(response.data.address);
@@ -316,26 +317,18 @@ loadTable();
           LT_array.push(L_T);
   
         }
-  
+          console.log(LR_array);
            setLatestReceived(LR_array);
            setLatestTransferred(LT_array);      
-        
-  
-        
-          
          
           var sixtyDaysNftIn=[];
           var sixtyDaysNftOut=[];
   
   
          for(var i=0;i<result.data.account.transfersTo.length;i++){
-           
         
            if(result.data.account.transfersTo[i].timestamp>1632850162){
-             
-            
             sixtyDaysNftIn.push(result.data.account.transfersTo[i].id)
-           
            }
   
         };
@@ -386,7 +379,6 @@ loadTable();
         const Account_Active=(new Date(latestReceived[0].date).getTime()-new Date(received.date).getTime())/(1000*60*60*24);
   
       setAccountPeriod(Account_Active);
-  
 
       }
       
@@ -411,7 +403,7 @@ loadTable();
             Csv_username_upload:ID,
         }
  
-        axios.post("https://statsnft.herokuapp.com/wallet/add", AddressFile)
+        axios.post("http://localhost:5000/wallet/add", AddressFile)
         .then(res => {
           
           
@@ -420,9 +412,7 @@ loadTable();
       }
      
      
-      const UploadFile=(ID)=>{    
-          
-       }
+      
 
       
       const submit = () => {
@@ -434,19 +424,11 @@ loadTable();
               processCSV(text)
           }
   
-          reader.readAsText(file);
-          
-        
+          reader.readAsText(file); 
       }
   
   
-      function uploadCsv(e){
-  
-          e.preventDefault();
-  
-         console.log(e.target) 
-  
-  }
+      
   
   
   
@@ -461,10 +443,8 @@ loadTable();
   
   const handleClick=(e) => {
   
-    e.preventDefault()
-  
-  
-    setImmediateSales([]);
+       e.preventDefault()
+      setImmediateSales([]);
       setSD_NFT_Sale([]);
       setSD_Sales([]);
       setSD_Buys([]);
@@ -503,7 +483,7 @@ loadTable();
   };
   
   
-   axios.post("https://statsnft.herokuapp.com/stats/add",newUser).then(res=>{
+   axios.post("http://localhost:5000/stats/add",newUser).then(res=>{
      return res.data.insertedId;
    }).then(res=>{
   
@@ -511,7 +491,7 @@ loadTable();
   
     console.log(res);
   
-    axios.get("https://statsnft.herokuapp.com/stats/get/"+res).then(response => {
+    axios.get("http://localhost:5000/stats/get/"+res).then(response => {
       console.log(response);
       setMost_expensive_assets(response.data.NFT_stats.most_expensive_assets);
       setSD_NFT_Sale(response.data.NFT_stats.NFT_Sale);
@@ -652,7 +632,7 @@ loadTable();
   
              immediateSales={immediateSales}
   
-             SD_Buys={SD_Buys}
+           
   
              maxAverageHoldDuration={maxAverageHoldDuration}
   
@@ -670,8 +650,6 @@ loadTable();
 
   
   const handle_App_PassedId = (userId) => {
-  
-  
     setID(userId);
     console.log("App_PassedId",userId);
    }

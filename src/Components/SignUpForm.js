@@ -7,7 +7,7 @@ import "./style.css";
 
 const SignUpForm = ({
   history,
-  onSubmit,
+  onceSubmit,
   onChange,
   errors,
   user,
@@ -30,7 +30,7 @@ const SignUpForm = ({
       <h1>Sign Up</h1>
       {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
 
-      <form  className="forms" onSubmit={onSubmit}  autoComplete="off" >
+      <form  className="forms" onSubmit={onceSubmit}  autoComplete="off" >
         <TextField
           name="username"
           id="outlined-basic" label="username" variant="outlined"
@@ -79,8 +79,7 @@ const SignUpForm = ({
         <br/>
 
         <Button variant="contained"
-        onClick={onSubmit}
-          className="signUpSubmit"
+          
           primary={true}
           type="submit"
           label="submit"

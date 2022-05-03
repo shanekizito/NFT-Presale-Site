@@ -8,31 +8,25 @@ const Collections = () => {
  const [NFT_Collection, setNFT_Collection] = useState([]);
 
  useEffect(() => {
-
-    
-try {
-       const getNFT_Collection = async () => {
+  try {
+        const getNFT_Collection = async () => {
         const res = await axios.get("http://localhost:5000/collections/get");
         console.log(res);
-
-        
         setNFT_Collection(res.data.collections);
-        console.log(NFT_Collection);
-       };
-       
+        
+       }; 
        getNFT_Collection(); 
-} catch (error) {
-    
-}
+} 
 
+catch (error) {
+console.log(error);
+}
 
  }, []);    
 
 
     return (
-       
        <div>
-      
         <div className='collections-container'>
         <h1 className='collections-header'>Leaderboards<img src="https://img.icons8.com/emoji/48/000000/bullseye.png"/></h1>
         {NFT_Collection!==null && NFT_Collection.length>0?
@@ -50,7 +44,6 @@ try {
                       <tbody>
                           {
                               NFT_Collection.map((item, i) => (
-                               
                                 <tr className="Collection-row" key={i}
                                   >
                                       <td>{i+1} <span  className="collection-name">{item.Name}</span><i class="fas fa-external-link-alt"></i></td>

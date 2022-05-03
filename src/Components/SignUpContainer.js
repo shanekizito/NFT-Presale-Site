@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SignUpForm from "./SignUpForm.js";
+import SignUpForm from "./SignUpForm";
 
-import LoginForm from "./loginForm.js";
+import LoginForm from "./loginForm";
 
 const axios = require("axios");
 const FormValidators = require("./validate");
@@ -72,15 +72,16 @@ class SignUpContainer extends Component {
     }
   }
 
-  submitSignup(user) {
-    console.log("login");
-    var params = { username: user.usr, password: user.pw, email: user.email };
-  
+   submitSignup(user) {
+     
+    var para = { username: user.usr, password: user.pw, email: user.email };
+    console.log(para);
     axios
-      .post("https://statsnft.herokuapp.com/register/user", params)
+      .post('http://localhost:5000/register/user', para)
       .then(res => {
     
         console.log(res);
+
         if (res.data.acknowledged === true) {
           var userID=res.data.insertedId;
           this.props.receivedID(userID);
@@ -105,9 +106,9 @@ class SignUpContainer extends Component {
   submitLogin(user) {
     
     var params = { email: user.email , password: user.pw };
-  console.log(params);
+    console.log(params);
     axios
-      .post("https://statsnft.herokuapp.com/login/user", params)
+      .post("http://localhost:5000/login/user", params)
       .then(res => {
     
         console.log(res ,"login");
@@ -143,6 +144,7 @@ class SignUpContainer extends Component {
         pw: this.state.user.password,
         email: this.state.user.email
       };
+      
       this.submitSignup(user);
     } else {
       const errors = payload.errors;
@@ -189,7 +191,7 @@ class SignUpContainer extends Component {
       <div>
 
   {window.location.pathname == "/signUp" ?<SignUpForm
-          onSubmit={this.validateForm}
+          onceSubmit={this.validateForm}
           onChange={this.handleChange}
           onPwChange={this.pwHandleChange}
           errors={this.state.errors}
@@ -210,7 +212,6 @@ class SignUpContainer extends Component {
         pwMask={this.pwMask}
       />}
       
-        
       </div>
     );
   }
